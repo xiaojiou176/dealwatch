@@ -13,6 +13,9 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 from scripts.shared.browser_instance_identity import (
     write_browser_identity_page,
@@ -30,6 +33,7 @@ from scripts.shared.browser_lane_targets import (
     target_matches_existing_url,
     target_matches_existing_url_for_mode,
 )
+from dealwatch.infra.output_redaction import sanitize_local_output
 
 
 def parse_args() -> argparse.Namespace:
@@ -235,6 +239,7 @@ def build_payload(
 
 
 def render_text(payload: dict[str, Any]) -> str:
+    payload = sanitize_local_output(payload)
     lines = [
         "DealWatch canonical browser lane helper",
         f"status={payload['status']}",

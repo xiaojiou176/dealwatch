@@ -60,6 +60,7 @@ Think of them like three instruments in the same repair bay:
 - `probe-live`: quick truth probe
 - `diagnose-live`: full structured diagnosis
 - `support-bundle`: preserve the current diagnosis plus the currently open browser-lane pages for later review
+- emitted JSON and support bundles now redact repo-local filesystem paths and drop page-title fields so maintainer diagnostics do not echo local roots or account-name fragments back to the terminal
 
 ## Environment contract
 
@@ -162,7 +163,7 @@ If any one of those checks fails, treat it as a profile-contract problem first, 
 For the real `dealwatch` profile, the old shared Chrome root is now deprecated:
 
 - `CHROME_USER_DATA_DIR` must point at the dedicated DealWatch browser root
-- it must not point at `~/Library/Application Support/Google/Chrome`
+- it must not point at the default macOS Chrome profile root
 
 The dedicated DealWatch browser root is:
 
@@ -184,8 +185,8 @@ Use `persistent` only for bootstrap proof or migration-time checks. Do not keep 
 Use the repo-owned migration script to clone the real `dealwatch` profile into the dedicated browser root:
 
 ```bash
-# First, fully quit any real Google Chrome process still using the default root
-# under ~/Library/Application Support/Google/Chrome.
+# First, fully quit any real Google Chrome process still using the default
+# macOS Chrome profile root.
 python3 scripts/migrate_dealwatch_chrome_profile.py --dry-run
 python3 scripts/migrate_dealwatch_chrome_profile.py --apply
 python3 scripts/check_runtime_env.py --target startup --env-file .env

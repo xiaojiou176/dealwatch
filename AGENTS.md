@@ -76,8 +76,8 @@
   - `CHROME_USER_DATA_DIR`
   - `CHROME_PROFILE_NAME`
   - `CHROME_PROFILE_DIRECTORY`
-- The old shared-root contract is deprecated for `dealwatch`; do not point `CHROME_USER_DATA_DIR` at `~/Library/Application Support/Google/Chrome` when `CHROME_PROFILE_NAME=dealwatch`.
-- Before running the one-time migration into the dedicated DealWatch root, fully quit any real Google Chrome process still using the default root under `~/Library/Application Support/Google/Chrome`.
+- The old shared-root contract is deprecated for `dealwatch`; do not point `CHROME_USER_DATA_DIR` at the default macOS Google Chrome user-data root when `CHROME_PROFILE_NAME=dealwatch`.
+- Before running the one-time migration into the dedicated DealWatch root, fully quit any real Google Chrome process still using the default macOS Google Chrome user-data root.
 - The preferred long-term mode is one dedicated DealWatch Chrome instance plus CDP attach:
   - launch the instance against the dedicated root
   - keep it running

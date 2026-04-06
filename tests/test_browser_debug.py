@@ -12,9 +12,11 @@ from dealwatch.infra.browser_debug import (
     collect_browser_debug_surfaces,
     diagnose_browser_debug,
     resolve_browser_debug_contract,
+    sanitize_browser_debug_output,
     write_browser_support_bundle,
 )
 from dealwatch.infra.config import Settings
+from scripts.shared.browser_lane_contract import DEFAULT_SHARED_CHROME_ROOT
 
 
 def _make_settings(tmp_path: Path) -> Settings:
@@ -228,7 +230,7 @@ async def test_collect_browser_debug_surfaces_treats_target_account_surface_as_l
     page = _FakePage(
         url="https://www.target.com/account",
         title="Account : Target",
-        content="<html><body>Hi, Member Track Orders Account since March 2, 2024</body></html>",
+        content="<html><body>Hi, Member Track Orders Account dashboard ready</body></html>",
     )
 
     surfaces = await collect_browser_debug_surfaces(page, source="existing_browser_session", observe_ms=0)
@@ -403,7 +405,7 @@ async def test_diagnose_browser_debug_skips_identity_tab_when_account_tab_exists
     account_page = _FakePage(
         url="https://www.target.com/account",
         title="Account : Target",
-        content="<html><body>Hi, Member Track Orders Account since March 2, 2024</body></html>",
+        content="<html><body>Hi, Member Track Orders Account dashboard ready</body></html>",
     )
     context = _FakeContext([identity_page, account_page])
     browser = _FakeBrowser([context])
@@ -438,7 +440,7 @@ async def test_diagnose_browser_debug_requires_user_data_dir_for_persistent(tmp_
 async def test_diagnose_browser_debug_rejects_legacy_shared_chrome_root(tmp_path: Path) -> None:
     settings = _make_settings(tmp_path)
     settings.CHROME_ATTACH_MODE = "browser"
-    settings.CHROME_USER_DATA_DIR = "<default-macos-chrome-user-data-root>"
+    settings.CHROME_USER_DATA_DIR = DEFAULT_SHARED_CHROME_ROOT
     settings.CHROME_PROFILE_NAME = "dealwatch"
     settings.CHROME_PROFILE_DIRECTORY = "Profile 21"
 
@@ -517,7 +519,14 @@ def test_write_browser_support_bundle_creates_json(tmp_path: Path) -> None:
     diagnosis = {
         "generated_at": "2026-04-03T00:00:00+00:00",
         "status": "attach_failed",
-        "contract": {"attach_mode": "browser"},
+        "contract": {
+            "attach_mode": "browser",
+            "user_data_dir": str(tmp_path / "chrome-user-data"),
+        },
+        "current_page": {
+            "url": "https://www.walmart.com/account",
+            "title": "Hi, Member",
+        },
         "open_pages": [{"url": "https://www.walmart.com/account", "title": "Manage Account - Home - Walmart.com"}],
         "next_actions": ["retry"],
     }
@@ -529,3 +538,35 @@ def test_write_browser_support_bundle_creates_json(tmp_path: Path) -> None:
     payload = json.loads(output_path.read_text(encoding="utf-8"))
     assert payload["diagnosis"]["status"] == "attach_failed"
     assert payload["diagnosis"]["open_pages"][0]["url"] == "https://www.walmart.com/account"
+    assert "title" not in payload["diagnosis"]["current_page"]
+    assert "title" not in payload["diagnosis"]["open_pages"][0]
+    assert payload["diagnosis"]["contract"]["user_data_dir"] == "<local-path>/chrome-user-data"
+
+
+def test_sanitize_browser_debug_output_redacts_local_paths_and_titles(tmp_path: Path) -> None:
+    payload = sanitize_browser_debug_output(
+        {
+            "output_path": str(tmp_path / "browser-debug" / "bundle.json"),
+            "bundle": {
+                "diagnosis": {
+                    "current_page": {
+                        "url": f"file://{tmp_path}/.runtime-cache/browser-identity/index.html",
+                        "title": "Hi, Member",
+                    },
+                    "open_pages": [
+                        {
+                            "url": "https://www.target.com/account",
+                            "title": "Account : Target",
+                        }
+                    ],
+                },
+                "git": {"branch": "main", "status_short": " M secret.txt"},
+            },
+        }
+    )
+
+    assert payload["output_path"] == "<local-path>/bundle.json"
+    assert payload["bundle"]["diagnosis"]["current_page"]["url"].startswith("file://")
+    assert "title" not in payload["bundle"]["diagnosis"]["current_page"]
+    assert "title" not in payload["bundle"]["diagnosis"]["open_pages"][0]
+    assert "status_short" not in payload["bundle"]["git"]

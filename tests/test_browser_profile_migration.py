@@ -41,7 +41,7 @@ def test_detect_active_default_chrome_processes_filters_non_default_user_data_di
             [
                 "1234 Google /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --remote-debugging-port=9222",
                 "5678 Google /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --user-data-dir=/tmp/not-dealwatch-root",
-                "9012 Python <uv-executable> run something --chrome-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                "9012 Python /tmp/fake-uv run something --chrome-path /Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
             ]
         )
 

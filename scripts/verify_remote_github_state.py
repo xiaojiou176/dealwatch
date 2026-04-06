@@ -32,11 +32,13 @@ EXPECTED_REQUIRED_CHECKS = {"governance", "test", "frontend", "product-smoke", "
 EXPECTED_WORKFLOWS = {"CI", "CodeQL"}
 EXPECTED_LABELS = {"store-request", "compare-preview", "public-surface", "release"}
 EXPECTED_LATEST_RELEASE = "v0.1.2"
-EXPECTED_DISCUSSION_URLS = {
-    "https://github.com/xiaojiou176/dealwatch/discussions/5",
-    "https://github.com/xiaojiou176/dealwatch/discussions/6",
-    "https://github.com/xiaojiou176/dealwatch/discussions/7",
+EXPECTED_DISCUSSION_ENTRYPOINTS = {
+    "https://github.com/xiaojiou176/dealwatch/discussions",
+    "https://github.com/xiaojiou176/dealwatch/discussions/categories/announcements",
+    "https://github.com/xiaojiou176/dealwatch/discussions/categories/q-a",
+    "https://github.com/xiaojiou176/dealwatch/discussions/categories/show-and-tell",
 }
+EXPECTED_DISCUSSION_CATEGORY_SLUGS = {"announcements", "q-a", "show-and-tell"}
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 
 
@@ -94,7 +96,9 @@ def main() -> int:
     releases_status, releases = fetch_json(f"{BASE}/releases?per_page=10")
     latest_release_status, latest_release = fetch_json(f"{BASE}/releases/latest")
     pvr_status, pvr = fetch_json(f"{BASE}/private-vulnerability-reporting")
-    code_scanning_status, code_scanning = fetch_json(f"{BASE}/code-scanning/alerts?per_page=100")
+    code_scanning_status, code_scanning = fetch_json(f"{BASE}/code-scanning/alerts?state=open&per_page=100")
+    secret_scanning_status, secret_scanning = fetch_json(f"{BASE}/secret-scanning/alerts?state=open&per_page=100")
+    dependabot_status, dependabot = fetch_json(f"{BASE}/dependabot/alerts?state=open&per_page=100")
     discussions_status = 0
     discussions_payload: object = {}
     if auth_enabled:
@@ -102,14 +106,9 @@ def main() -> int:
             """
             query {
               repository(owner: "xiaojiou176", name: "dealwatch") {
-                discussions(first: 20, orderBy: {field: UPDATED_AT, direction: DESC}) {
+                discussionCategories(first: 20) {
                   nodes {
-                    number
-                    title
-                    url
-                    category {
-                      slug
-                    }
+                    slug
                   }
                 }
               }
@@ -131,6 +130,8 @@ def main() -> int:
     print(f"latest_release_status={latest_release_status}")
     print(f"private_vulnerability_reporting_status={pvr_status}")
     print(f"code_scanning_status={code_scanning_status}")
+    print(f"secret_scanning_status={secret_scanning_status}")
+    print(f"dependabot_status={dependabot_status}")
     if auth_enabled:
         print(f"discussions_graphql_status={discussions_status}")
     print("")
@@ -276,26 +277,59 @@ def main() -> int:
         print("code_scanning_alerts_api=unknown")
         findings.append("code scanning alerts API must be available or require auth")
 
+    if secret_scanning_status == 200 and isinstance(secret_scanning, list):
+        print("secret_scanning_alerts_api=available")
+        print(f"secret_scanning_alert_count={len(secret_scanning)}")
+        if secret_scanning:
+            findings.append("secret scanning alerts must be zero")
+    elif secret_scanning_status in {401, 403}:
+        print("secret_scanning_alerts_api=requires_auth")
+        manual_checks.append(
+            "secret scanning alert count needs authenticated GitHub API access or a manual GitHub UI review"
+        )
+    else:
+        print("secret_scanning_alerts_api=unknown")
+        findings.append("secret scanning alerts API must be available or require auth")
+
+    if dependabot_status == 200 and isinstance(dependabot, list):
+        print("dependabot_alerts_api=available")
+        print(f"dependabot_alert_count={len(dependabot)}")
+        if dependabot:
+            findings.append("dependabot alerts must be zero")
+    elif dependabot_status in {401, 403}:
+        print("dependabot_alerts_api=requires_auth")
+        manual_checks.append(
+            "Dependabot alert count needs authenticated GitHub API access or a manual GitHub UI review"
+        )
+    else:
+        print("dependabot_alerts_api=unknown")
+        findings.append("Dependabot alerts API must be available or require auth")
+
     if auth_enabled:
         if discussions_status == 200 and isinstance(discussions_payload, dict):
             repo = ((discussions_payload.get("data") or {}).get("repository") or {})
-            nodes = ((repo.get("discussions") or {}).get("nodes") or [])
-            discussion_urls = {
-                item.get("url", "")
+            nodes = ((repo.get("discussionCategories") or {}).get("nodes") or [])
+            discussion_category_slugs = {
+                item.get("slug", "")
                 for item in nodes
-                if isinstance(item, dict) and item.get("url")
+                if isinstance(item, dict) and item.get("slug")
             }
-            print(f"discussion_threads={','.join(sorted(url for url in discussion_urls if url))}")
-            missing_discussions = sorted(EXPECTED_DISCUSSION_URLS.difference(discussion_urls))
-            if missing_discussions:
+            print(
+                "discussion_categories="
+                + ",".join(sorted(slug for slug in discussion_category_slugs if slug))
+            )
+            missing_discussion_categories = sorted(
+                EXPECTED_DISCUSSION_CATEGORY_SLUGS.difference(discussion_category_slugs)
+            )
+            if missing_discussion_categories:
                 findings.append(
-                    "expected public discussion threads missing: "
-                    + ", ".join(missing_discussions)
+                    "expected public discussion categories missing: "
+                    + ", ".join(missing_discussion_categories)
                 )
         else:
             findings.append("discussion GraphQL endpoint must return 200 with authenticated access")
     else:
-        manual_checks.append("public discussion thread existence needs authenticated GraphQL access")
+        manual_checks.append("discussion category inventory needs authenticated GraphQL access")
 
     if findings:
         print("")

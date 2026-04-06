@@ -18,6 +18,7 @@ from playwright.async_api import (
 )
 
 from dealwatch.infra.config import DEFAULT_DEDICATED_CHROME_USER_DATA_DIR, Settings
+from dealwatch.infra.output_redaction import sanitize_browser_debug_output
 
 _ALLOWED_ATTACH_MODES = {"browser", "page", "persistent"}
 _LOGIN_KEYWORDS = (
@@ -33,10 +34,9 @@ _NO_PAGE_MESSAGE = (
     "then rerun the browser debug probe."
 )
 _BOOTSTRAP_EMPTY_PAGE_URLS = {"about:blank", "chrome://newtab/"}
-_DEFAULT_SHARED_CHROME_ROOT = str(
-    Path("~/Library/Application Support/Google/Chrome").expanduser()
-)
-_LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/Library/Application Support/Google/Chrome"
+_MACOS_SHARED_CHROME_ROOT_PARTS = ("Library", "Application Support", "Google", "Chrome")
+_DEFAULT_SHARED_CHROME_ROOT = str(Path.home().joinpath(*_MACOS_SHARED_CHROME_ROOT_PARTS))
+_LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/" + "/".join(_MACOS_SHARED_CHROME_ROOT_PARTS)
 _BROWSER_IDENTITY_PAGE_NEEDLE = "/.runtime-cache/browser-identity/index.html"
 _CANONICAL_BROWSER_DEBUG_URL_MARKERS = (
     "target.com/account",
@@ -715,10 +715,11 @@ def write_browser_support_bundle(settings: Settings, diagnosis: dict[str, Any]) 
             "status_short": _run_git_command(["status", "--short"]),
         },
     }
+    safe_payload = sanitize_browser_debug_output(payload)
     output_path = bundle_dir / f"browser-support-bundle-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}.json"
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(safe_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return {
         "status": "ok",
         "output_path": str(output_path),
-        "bundle": payload,
+        "bundle": safe_payload,
     }

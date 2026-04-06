@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from scripts.shared.browser_lane_contract import DEFAULT_SHARED_CHROME_ROOT
 from scripts.report_dealwatch_login_state import (
     inspect_target,
     render_text,
@@ -138,7 +139,7 @@ def test_resolve_contract_rejects_legacy_shared_root(tmp_path: Path) -> None:
     with pytest.raises(SystemExit) as exc_info:
         resolve_contract(
             {
-                "CHROME_USER_DATA_DIR": "<default-macos-chrome-user-data-root>",
+                "CHROME_USER_DATA_DIR": DEFAULT_SHARED_CHROME_ROOT,
                 "CHROME_PROFILE_NAME": "dealwatch",
                 "CHROME_PROFILE_DIRECTORY": "Profile 21",
             },
@@ -149,7 +150,7 @@ def test_resolve_contract_rejects_legacy_shared_root(tmp_path: Path) -> None:
     assert "must not point at the legacy shared Chrome root" in str(exc_info.value)
 
 
-def test_render_text_includes_browser_root() -> None:
+def test_render_text_redacts_browser_root() -> None:
     text = render_text(
         {
             "cdp_url": "http://127.0.0.1:9333",
@@ -167,7 +168,7 @@ def test_render_text_includes_browser_root() -> None:
         }
     )
 
-    assert "browser_user_data_dir=/tmp/dealwatch-chrome" in text
+    assert "browser_user_data_dir=<local-path>/dealwatch-chrome" in text
     assert "- Target account | state=homepage_logged_in" in text
 
 
