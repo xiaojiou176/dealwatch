@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PYPROJECT = ROOT / "pyproject.toml"
 README = ROOT / "README.md"
 SERVER_JSON = ROOT / "server.json"
-EXPECTED_MCP_NAME = "io.github.xiaojiou176/dealwatch"
+EXPECTED_MCP_NAME = "io.github.xiaojiou176-open/dealwatch"
 
 REQUIRED_URLS = {
     "Homepage",

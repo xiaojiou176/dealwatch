@@ -49,7 +49,7 @@ def main() -> int:
         discussions_status, discussions_payload = fetch_graphql(
             """
             query {
-              repository(owner: "xiaojiou176", name: "dealwatch") {
+              repository(owner: "xiaojiou176-open", name: "dealwatch") {
                 discussions(first: 20, orderBy: {field: UPDATED_AT, direction: DESC}) {
                   nodes {
                     url

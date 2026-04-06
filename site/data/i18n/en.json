@@ -869,13 +869,13 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "DealWatch vs. Generic Price Trackers | Compare First, Then Track",
-        "url": "https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html",
         "description": "See how DealWatch differs from a generic price tracker by starting with Compare Preview, compare-aware watch groups, AI-assisted explanation, and proof-backed read-only surfaces for Codex, Claude Code, OpenHands, OpenCode, and OpenClaw.",
         "keywords": "DealWatch, generic price tracker, compare-first, Compare Preview, compare-aware watch groups, read-only proof surface, Claude Code, Codex, OpenHands, OpenCode, OpenClaw",
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         },
         "about": [
           "Compare-first grocery price intelligence",
@@ -922,9 +922,9 @@
         "name": "DealWatch",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, macOS, Linux, Windows",
-        "url": "https://xiaojiou176.github.io/dealwatch/",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/",
         "description": "Compare-first grocery price intelligence with three first-step paths: sample Compare Preview, local Quick Start, and read-only Builders.",
-        "softwareHelp": "https://xiaojiou176.github.io/dealwatch/faq.html",
+        "softwareHelp": "https://xiaojiou176-open.github.io/dealwatch/faq.html",
         "keywords": "DealWatch, Compare Preview, Quick Start, Builders, compare-first grocery price intelligence",
         "featureList": [
           "Compare-first grocery URL validation",
@@ -1036,13 +1036,13 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "DealWatch Compare Preview | Compare First, Then Track",
-        "url": "https://xiaojiou176.github.io/dealwatch/compare-preview.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/compare-preview.html",
         "description": "Open a read-only sample compare preview, then choose Quick Start, Proof, or Builders depending on whether you want the local runtime, the verifier trail, or read-only agent wiring.",
         "keywords": "DealWatch Compare Preview, compare-first, read-only sample, Quick Start, Proof, Builders",
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         },
         "about": [
           "Compare-first grocery URL validation",
@@ -1174,7 +1174,7 @@
         "@type": "TechArticle",
         "headline": "DealWatch Proof | AI Explanation, Recovery Guidance, and Read-Only MCP Evidence",
         "name": "DealWatch Proof | AI Explanation, Recovery Guidance, and Read-Only MCP Evidence",
-        "url": "https://xiaojiou176.github.io/dealwatch/proof.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/proof.html",
         "description": "See the proof behind DealWatch's AI-assisted compare explanations, read-only MCP/API access for Claude Code, Codex, OpenHands, OpenCode, OpenClaw, runtime commands, and recommendation boundaries.",
         "keywords": "DealWatch proof, read-only MCP, Claude Code, Codex, OpenHands, OpenCode, OpenClaw, AI-assisted explanation, compare-first",
         "about": [
@@ -1186,7 +1186,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       },
       "statusAdapterTitle": "Live adapter evidence",
@@ -1548,7 +1548,7 @@
         "@type": "TechArticle",
         "headline": "DealWatch Builders | Read-Only Builder Frontdoor and Runtime Route",
         "name": "DealWatch Builders",
-        "url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/builders.html",
         "description": "Use DealWatch as a local-first read-only decision backend through one honest route: human path first, machine path second, then local runtime export surfaces.",
         "keywords": "DealWatch builders, read-only builder frontdoor, llms.txt, sitemap.xml, builder starter pack JSON, Codex MCP, Claude Code MCP, OpenHands MCP, OpenCode MCP, OpenClaw MCP",
         "about": [
@@ -1563,7 +1563,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1634,7 +1634,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "DealWatch Use Cases",
-        "url": "https://xiaojiou176.github.io/dealwatch/use-cases.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/use-cases.html",
         "description": "Use-case overview for compare-first grocery comparison, compare-aware watch groups, cashback-aware tracking, AI-assisted explanation, and operator recovery.",
         "about": [
           "Cross-store grocery comparison",
@@ -1646,7 +1646,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1768,7 +1768,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "DealWatch Community",
-        "url": "https://xiaojiou176.github.io/dealwatch/community.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/community.html",
         "description": "Public entrypoints for DealWatch discussions, roadmap questions, store requests, release updates, and support flows.",
         "about": [
           "GitHub Discussions",
@@ -1779,7 +1779,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1799,12 +1799,12 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "DealWatch | Page not found",
-        "url": "https://xiaojiou176.github.io/dealwatch/404.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/404.html",
         "description": "The page you asked for does not exist. Use the DealWatch home page, quick start, or FAQ instead.",
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     }

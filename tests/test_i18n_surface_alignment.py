@@ -95,7 +95,7 @@ def test_public_comparison_page_metadata_is_bound_to_shared_keys() -> None:
 
     assert 'data-i18n-key="site.comparisonPage.title"' in html
     assert 'data-i18n-key="site.comparisonPage.description"' in html
-    assert '<link rel="canonical" href="https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html"' in html
+    assert '<link rel="canonical" href="https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html"' in html
     assert 'property="og:title"' in html and 'data-i18n-key="site.comparisonPage.title"' in html
     assert 'property="og:description"' in html and 'data-i18n-key="site.comparisonPage.description"' in html
     assert 'name="twitter:title"' in html and 'data-i18n-key="site.comparisonPage.title"' in html

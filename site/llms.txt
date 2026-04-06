@@ -4,33 +4,33 @@
 
 ## Primary entrypoints
 
-- Home: https://xiaojiou176.github.io/dealwatch/
-- Compare Preview: https://xiaojiou176.github.io/dealwatch/compare-preview.html
-- Quick Start: https://xiaojiou176.github.io/dealwatch/quick-start.html
-- Builders: https://xiaojiou176.github.io/dealwatch/builders.html
-- Comparison: https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html
-- Proof: https://xiaojiou176.github.io/dealwatch/proof.html
-- Community: https://xiaojiou176.github.io/dealwatch/community.html
-- FAQ: https://xiaojiou176.github.io/dealwatch/faq.html
-- Feed: https://xiaojiou176.github.io/dealwatch/feed.xml
+- Home: https://xiaojiou176-open.github.io/dealwatch/
+- Compare Preview: https://xiaojiou176-open.github.io/dealwatch/compare-preview.html
+- Quick Start: https://xiaojiou176-open.github.io/dealwatch/quick-start.html
+- Builders: https://xiaojiou176-open.github.io/dealwatch/builders.html
+- Comparison: https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html
+- Proof: https://xiaojiou176-open.github.io/dealwatch/proof.html
+- Community: https://xiaojiou176-open.github.io/dealwatch/community.html
+- FAQ: https://xiaojiou176-open.github.io/dealwatch/faq.html
+- Feed: https://xiaojiou176-open.github.io/dealwatch/feed.xml
 
 ## Builder entrypoints
 
 - Human path: builder pack -> phase-1 contract -> local runtime exports -> compare preview
 - Machine path mirror: builders page -> static client catalog index -> static client starters mirror -> static starter pack mirror -> static all-clients bundle mirror -> phase-1 contract -> local runtime export surfaces -> compare preview
-- Static builder client catalog: https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json
-- Static client starters mirror: https://xiaojiou176.github.io/dealwatch/data/builder-client-starters.json
-- Static builder starter pack mirror: https://xiaojiou176.github.io/dealwatch/data/builder-starter-pack.json
-- Static all-clients config mirror: https://xiaojiou176.github.io/dealwatch/data/builder-client-configs.json
-- Repo-owned builder frontdoor: https://xiaojiou176.github.io/dealwatch/builders.html
-- Native bundle candidates for the plugin platforms that already support them: https://github.com/xiaojiou176/dealwatch/tree/main/plugins/dealwatch-builder-pack
-- Claude Code repo marketplace: https://github.com/xiaojiou176/dealwatch/blob/main/.claude-plugin/marketplace.json
-- Codex repo marketplace: https://github.com/xiaojiou176/dealwatch/blob/main/.agents/plugins/marketplace.json
-- Listing-prep distribution assets: https://xiaojiou176.github.io/dealwatch/assets/social/social-preview-1280x640.png , https://xiaojiou176.github.io/dealwatch/proof.html , https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json
-- SEO crawl surfaces for the same frontdoor: https://xiaojiou176.github.io/dealwatch/llms.txt , https://xiaojiou176.github.io/dealwatch/sitemap.xml , https://xiaojiou176.github.io/dealwatch/feed.xml
-- API / MCP substrate contract: https://github.com/xiaojiou176/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md
-- Builder starter pack: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations
-- Client config recipes: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md
+- Static builder client catalog: https://xiaojiou176-open.github.io/dealwatch/data/builder-client-catalog.json
+- Static client starters mirror: https://xiaojiou176-open.github.io/dealwatch/data/builder-client-starters.json
+- Static builder starter pack mirror: https://xiaojiou176-open.github.io/dealwatch/data/builder-starter-pack.json
+- Static all-clients config mirror: https://xiaojiou176-open.github.io/dealwatch/data/builder-client-configs.json
+- Repo-owned builder frontdoor: https://xiaojiou176-open.github.io/dealwatch/builders.html
+- Native bundle candidates for the plugin platforms that already support them: https://github.com/xiaojiou176-open/dealwatch/tree/main/plugins/dealwatch-builder-pack
+- Claude Code repo marketplace: https://github.com/xiaojiou176-open/dealwatch/blob/main/.claude-plugin/marketplace.json
+- Codex repo marketplace: https://github.com/xiaojiou176-open/dealwatch/blob/main/.agents/plugins/marketplace.json
+- Listing-prep distribution assets: https://xiaojiou176-open.github.io/dealwatch/assets/social/social-preview-1280x640.png , https://xiaojiou176-open.github.io/dealwatch/proof.html , https://xiaojiou176-open.github.io/dealwatch/data/builder-client-catalog.json
+- SEO crawl surfaces for the same frontdoor: https://xiaojiou176-open.github.io/dealwatch/llms.txt , https://xiaojiou176-open.github.io/dealwatch/sitemap.xml , https://xiaojiou176-open.github.io/dealwatch/feed.xml
+- API / MCP substrate contract: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md
+- Builder starter pack: https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations
+- Client config recipes: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/config-recipes.md
 - CLI client config export: `python -m dealwatch builder-client-config <client> --json`
 - CLI client config bundle: `python -m dealwatch builder-client-config --all --json`
 - HTTP client config export: `GET /api/runtime/builder-client-config/{client}`
@@ -38,15 +38,15 @@
 - MCP client config export: `get_builder_client_config`
 - MCP client config bundle: `list_builder_client_configs`
 - Local runtime tool inventory: `python -m dealwatch.mcp list-tools --json`
-- Client starters snapshot: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/mcp-client-starters.response.json
-- HTTP builder starter pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/http-builder-starter-pack.response.json
-- Prompt starters: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompt-starters.md
-- Per-client prompts: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/prompts
-- Per-client recipes: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/recipes
-- Wrapper examples: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/examples
-- Builder skill pack: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/skills
-- Product-safe first action after wiring: https://xiaojiou176.github.io/dealwatch/compare-preview.html
-- Official distribution reality by client: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md#official-distribution-reality-by-client
+- Client starters snapshot: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/mcp-client-starters.response.json
+- HTTP builder starter pack: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/http-builder-starter-pack.response.json
+- Prompt starters: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompt-starters.md
+- Per-client prompts: https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations/prompts
+- Per-client recipes: https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations/recipes
+- Wrapper examples: https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations/examples
+- Builder skill pack: https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations/skills
+- Product-safe first action after wiring: https://xiaojiou176-open.github.io/dealwatch/compare-preview.html
+- Official distribution reality by client: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/README.md#official-distribution-reality-by-client
 
 ## Product shape
 
@@ -72,10 +72,10 @@
 
 ## Trust surfaces
 
-- Latest release: https://github.com/xiaojiou176/dealwatch/releases/latest
-- Releases: https://github.com/xiaojiou176/dealwatch/releases
-- Discussions: https://github.com/xiaojiou176/dealwatch/discussions
-- Builder Starter Pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md
-- Builder Skill Pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/README.md
-- Start here: https://github.com/xiaojiou176/dealwatch#start-here
-- Roadmap: https://github.com/xiaojiou176/dealwatch#roadmap
+- Latest release: https://github.com/xiaojiou176-open/dealwatch/releases/latest
+- Releases: https://github.com/xiaojiou176-open/dealwatch/releases
+- Discussions: https://github.com/xiaojiou176-open/dealwatch/discussions
+- Builder Starter Pack: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/README.md
+- Builder Skill Pack: https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/README.md
+- Start here: https://github.com/xiaojiou176-open/dealwatch#start-here
+- Roadmap: https://github.com/xiaojiou176-open/dealwatch#roadmap

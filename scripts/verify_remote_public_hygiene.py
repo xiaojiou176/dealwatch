@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:
 from scripts.shared.sensitive_surface_patterns import find_sensitive_text_hits
 
 
-BASE = "https://api.github.com/repos/xiaojiou176/dealwatch"
+BASE = "https://api.github.com/repos/xiaojiou176-open/dealwatch"
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 GH = shutil.which("gh")
 

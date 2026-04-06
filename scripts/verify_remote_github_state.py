@@ -7,13 +7,13 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
-BASE = "https://api.github.com/repos/xiaojiou176/dealwatch"
+BASE = "https://api.github.com/repos/xiaojiou176-open/dealwatch"
 GRAPHQL_ENDPOINT = "https://api.github.com/graphql"
-EXPECTED_OWNER_LOGIN = "xiaojiou176"
-EXPECTED_OWNER_TYPE = "User"
-EXPECTED_HTML_URL = "https://github.com/xiaojiou176/dealwatch"
+EXPECTED_OWNER_LOGIN = "xiaojiou176-open"
+EXPECTED_OWNER_TYPE = "Organization"
+EXPECTED_HTML_URL = "https://github.com/xiaojiou176-open/dealwatch"
 EXPECTED_DESCRIPTION = "Open-source compare-first grocery price tracking with compare-aware watch groups, effective price, health, and alert history."
-EXPECTED_HOMEPAGE = "https://xiaojiou176.github.io/dealwatch/"
+EXPECTED_HOMEPAGE = "https://xiaojiou176-open.github.io/dealwatch/"
 EXPECTED_TOPICS = {
     "apscheduler",
     "cashback",
@@ -44,10 +44,10 @@ EXPECTED_LABELS = {"store-request", "compare-preview", "public-surface", "releas
 EXPECTED_LATEST_RELEASE = "v0.1.2"
 EXPECTED_PUBLIC_RELEASES = {"v0.1.2"}
 EXPECTED_DISCUSSION_ENTRYPOINTS = {
-    "https://github.com/xiaojiou176/dealwatch/discussions",
-    "https://github.com/xiaojiou176/dealwatch/discussions/categories/announcements",
-    "https://github.com/xiaojiou176/dealwatch/discussions/categories/q-a",
-    "https://github.com/xiaojiou176/dealwatch/discussions/categories/show-and-tell",
+    "https://github.com/xiaojiou176-open/dealwatch/discussions",
+    "https://github.com/xiaojiou176-open/dealwatch/discussions/categories/announcements",
+    "https://github.com/xiaojiou176-open/dealwatch/discussions/categories/q-a",
+    "https://github.com/xiaojiou176-open/dealwatch/discussions/categories/show-and-tell",
 }
 EXPECTED_DISCUSSION_CATEGORY_SLUGS = {"announcements", "q-a", "show-and-tell"}
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
@@ -116,7 +116,7 @@ def main() -> int:
         discussions_status, discussions_payload = fetch_graphql(
             """
             query {
-              repository(owner: "xiaojiou176", name: "dealwatch") {
+              repository(owner: "xiaojiou176-open", name: "dealwatch") {
                 discussionCategories(first: 20) {
                   nodes {
                     slug
