@@ -4,7 +4,7 @@ contact_links:
     url: https://github.com/xiaojiou176/dealwatch/discussions/categories/q-a
     about: Ask product usage questions in Discussions / Q&A.
   - name: Release notes and product updates
-    url: https://github.com/xiaojiou176/dealwatch/discussions/6
+    url: https://github.com/xiaojiou176/dealwatch/discussions
     about: Follow public product updates and release notes.
   - name: Security issue
     url: https://github.com/xiaojiou176/dealwatch/security/advisories/new

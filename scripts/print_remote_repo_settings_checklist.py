@@ -6,7 +6,7 @@ from pathlib import Path
 from verify_remote_github_state import (
     BASE,
     EXPECTED_DESCRIPTION,
-    EXPECTED_DISCUSSION_URLS,
+    EXPECTED_DISCUSSION_ENTRYPOINTS,
     EXPECTED_HOMEPAGE,
     EXPECTED_LABELS,
     EXPECTED_LATEST_RELEASE,
@@ -40,7 +40,9 @@ def main() -> int:
     issues_status, issues = fetch_json(f"{BASE}/issues?state=open&per_page=100")
     pulls_status, pulls = fetch_json(f"{BASE}/pulls?state=open&per_page=100")
     latest_release_status, latest_release = fetch_json(f"{BASE}/releases/latest")
-    code_scanning_status, code_scanning = fetch_json(f"{BASE}/code-scanning/alerts?per_page=100")
+    code_scanning_status, code_scanning = fetch_json(f"{BASE}/code-scanning/alerts?state=open&per_page=100")
+    secret_scanning_status, secret_scanning = fetch_json(f"{BASE}/secret-scanning/alerts?state=open&per_page=100")
+    dependabot_status, dependabot = fetch_json(f"{BASE}/dependabot/alerts?state=open&per_page=100")
     discussions_status = 0
     discussions_payload: object = {}
     if TOKEN:
@@ -84,7 +86,7 @@ def main() -> int:
     print("   - README public entrypoints present: #start-here and #roadmap")
     print("   - Pages entrypoints present: Home, Proof, Community")
     print(f"   - Latest release object resolves to: {EXPECTED_LATEST_RELEASE}")
-    print(f"   - Expected discussion threads: {format_csv(EXPECTED_DISCUSSION_URLS)}")
+    print(f"   - Expected discussion entrypoints: {format_csv(EXPECTED_DISCUSSION_ENTRYPOINTS)}")
     print("   - Repo-side social preview asset file exists and should pass the asset verifier")
     print("")
     print("Current remote facts (what GitHub says right now)")
@@ -152,6 +154,18 @@ def main() -> int:
         print("   - Code scanning alert count: requires authenticated GitHub API access")
     else:
         print(f"   - Code scanning alert count: unavailable (code_scanning_status={code_scanning_status})")
+    if secret_scanning_status == 200 and isinstance(secret_scanning, list):
+        print(f"   - Secret scanning alert count: {len(secret_scanning)}")
+    elif secret_scanning_status in {401, 403}:
+        print("   - Secret scanning alert count: requires authenticated GitHub API access")
+    else:
+        print(f"   - Secret scanning alert count: unavailable (secret_scanning_status={secret_scanning_status})")
+    if dependabot_status == 200 and isinstance(dependabot, list):
+        print(f"   - Dependabot alert count: {len(dependabot)}")
+    elif dependabot_status in {401, 403}:
+        print("   - Dependabot alert count: requires authenticated GitHub API access")
+    else:
+        print(f"   - Dependabot alert count: unavailable (dependabot_status={dependabot_status})")
     if latest_release_status == 200 and isinstance(latest_release, dict):
         current_latest = latest_release.get("tag_name") or ""
         print(f"   - Latest release status: {format_status(current_latest == EXPECTED_LATEST_RELEASE)}")
@@ -166,14 +180,13 @@ def main() -> int:
             for item in nodes
             if isinstance(item, dict) and item.get("url")
         }
-        missing_discussions = EXPECTED_DISCUSSION_URLS.difference(current_discussions)
-        print(f"   - Discussion thread status: {format_status(not missing_discussions)}")
+        print("   - Discussion entrypoint status: manual-review")
+        print(f"   - Stable entrypoints expected: {format_csv(EXPECTED_DISCUSSION_ENTRYPOINTS)}")
         print(f"   - Discussion threads current: {format_csv(current_discussions)}")
-        print(f"   - Missing expected discussions: {format_csv(missing_discussions)}")
     elif TOKEN:
-        print(f"   - Discussion thread status: unavailable (discussions_status={discussions_status})")
+        print(f"   - Discussion entrypoint status: unavailable (discussions_status={discussions_status})")
     else:
-        print("   - Discussion thread status: requires authenticated GraphQL access")
+        print("   - Discussion entrypoint status: requires authenticated GraphQL access")
     print("")
     print("Manual/admin-only GitHub UI checks")
     print("")
@@ -183,8 +196,8 @@ def main() -> int:
     print("   - Note: the repo can verify the asset file, but cannot prove GitHub is currently using it as the active social preview image")
     print("")
     print("9. Credentialed or admin review")
-    print("   - If you export GITHUB_TOKEN, the remote verifier can confirm the current code scanning alert count")
-    print("   - Without credentials, code scanning remains a blind spot and still needs GitHub UI review")
+    print("   - If you export GITHUB_TOKEN, the remote verifier can confirm current code-scanning, secret-scanning, and Dependabot alert counts")
+    print("   - Without credentials, GitHub security alert counts remain a blind spot and still need GitHub UI review")
     print("")
     print("10. Community surface")
     print("   - Confirm no stale open issues remain after repository closure")

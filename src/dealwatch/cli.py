@@ -26,6 +26,7 @@ from dealwatch.persistence.session import session_scope
 from dealwatch.server import main as server_main
 from dealwatch.stores import STORE_REGISTRY
 from dealwatch.worker.main import main as worker_main, run_once as worker_run_once
+from dealwatch.infra.output_redaction import sanitize_browser_debug_output
 
 RUNTIME_COMMANDS = (
     "server",
@@ -481,14 +482,14 @@ async def _run_builder_client_config(argv: list[str]) -> int:
 async def _run_probe_live(argv: list[str]) -> int:
     _parse_browser_debug_args(argv, description="DealWatch maintainer browser debug probe")
     payload = await probe_browser_debug(settings)
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    print(json.dumps(sanitize_browser_debug_output(payload), ensure_ascii=False, indent=2))
     return 0
 
 
 async def _run_diagnose_live(argv: list[str]) -> int:
     _parse_browser_debug_args(argv, description="DealWatch maintainer browser debug diagnosis")
     payload = await diagnose_browser_debug(settings)
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    print(json.dumps(sanitize_browser_debug_output(payload), ensure_ascii=False, indent=2))
     return 0
 
 
@@ -496,7 +497,7 @@ async def _run_support_bundle(argv: list[str]) -> int:
     _parse_browser_debug_args(argv, description="DealWatch maintainer browser debug support bundle")
     diagnosis = await diagnose_browser_debug(settings)
     bundle = write_browser_support_bundle(settings, diagnosis)
-    print(json.dumps(bundle, ensure_ascii=False, indent=2))
+    print(json.dumps(sanitize_browser_debug_output(bundle), ensure_ascii=False, indent=2))
     return 0
 
 

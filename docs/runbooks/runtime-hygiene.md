@@ -150,7 +150,7 @@ The dedicated browser root is special:
 - it does **not** participate in TTL cleanup
 - it does **not** participate in cache budget reclamation
 - it does **not** belong in rebuildable cleanup
-- before the one-time migration into this root, fully quit any real Google Chrome process still using the default root under `~/Library/Application Support/Google/Chrome`
+- before the one-time migration into this root, fully quit any real Google Chrome process still using the default macOS Chrome profile root
 
 ## Shared external layers
 

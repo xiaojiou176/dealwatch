@@ -3,6 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import scripts.check_runtime_env as check_runtime_env
+from scripts.shared.browser_lane_contract import DEFAULT_SHARED_CHROME_ROOT
 
 
 def test_parse_env_file_reads_key_values(tmp_path: Path) -> None:
@@ -154,7 +155,7 @@ def test_validate_runtime_rejects_partial_browser_profile_contract() -> None:
         "ENABLED_STORES": "weee",
         "CACHE_BUDGET_BYTES": "4294967296",
         "USE_LLM": "false",
-        "CHROME_USER_DATA_DIR": "<default-macos-chrome-user-data-root>",
+        "CHROME_USER_DATA_DIR": DEFAULT_SHARED_CHROME_ROOT,
         "CHROME_PROFILE_NAME": "dealwatch",
         "CHROME_PROFILE_DIRECTORY": "",
     }
@@ -175,7 +176,7 @@ def test_validate_runtime_rejects_legacy_shared_chrome_root_for_dealwatch() -> N
         "ENABLED_STORES": "weee",
         "CACHE_BUDGET_BYTES": "4294967296",
         "USE_LLM": "false",
-        "CHROME_USER_DATA_DIR": "<default-macos-chrome-user-data-root>",
+        "CHROME_USER_DATA_DIR": DEFAULT_SHARED_CHROME_ROOT,
         "CHROME_PROFILE_NAME": "dealwatch",
         "CHROME_PROFILE_DIRECTORY": "Profile 21",
     }

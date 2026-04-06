@@ -23,10 +23,9 @@ PLACEHOLDER_VALUES = {
 }
 _RUNTIME_CACHE_DRIFT_SEGMENT = ".runtime-cache/cache"
 _EMITTED_RUNTIME_WARNING_KEYS = {"DB_PATH", "BACKUPS_DIR"}
-_DEFAULT_SHARED_CHROME_ROOT = str(
-    Path("~/Library/Application Support/Google/Chrome").expanduser()
-)
-_LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/Library/Application Support/Google/Chrome"
+_MACOS_SHARED_CHROME_ROOT_PARTS = ("Library", "Application Support", "Google", "Chrome")
+_DEFAULT_SHARED_CHROME_ROOT = str(Path.home().joinpath(*_MACOS_SHARED_CHROME_ROOT_PARTS))
+_LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/" + "/".join(_MACOS_SHARED_CHROME_ROOT_PARTS)
 
 
 def _normalize_browser_root(value: str) -> str:

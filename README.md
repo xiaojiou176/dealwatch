@@ -1,4 +1,5 @@
 # DealWatch
+<!-- mcp-name: io.github.xiaojiou176/dealwatch -->
 
 [![CI](https://github.com/xiaojiou176/dealwatch/actions/workflows/ci.yml/badge.svg)](https://github.com/xiaojiou176/dealwatch/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/xiaojiou176/dealwatch/actions/workflows/codeql.yml/badge.svg)](https://github.com/xiaojiou176/dealwatch/actions/workflows/codeql.yml)
@@ -387,7 +388,8 @@ Think of this lane as the repair bay, not the main shipping road:
 - the mainline stays lightweight and hermetic
 - the debug lane answers “which browser/session did we actually attach to?”
 - `login_required` is a diagnosis state, not an automatic stop sign
-- the old shared-root contract is deprecated for `dealwatch`; do not keep it under `~/Library/Application Support/Google/Chrome`
+- the emitted debug JSON/support bundles redact local filesystem roots and drop page-title fields before they are printed or preserved
+- the old shared-root contract is deprecated for `dealwatch`; do not keep it under the default macOS Chrome profile root
 - the long-term DealWatch browser contract is a dedicated root at `~/.cache/dealwatch/browser/chrome-user-data`
 - the preferred long-term mode is `CHROME_ATTACH_MODE=browser` against one dedicated Chrome instance with a stable CDP listener
 - the first move into the dedicated root can still require one fresh manual sign-in, because stores can treat the migrated DealWatch workspace as a newly trusted browser
@@ -397,8 +399,8 @@ Think of this lane as the repair bay, not the main shipping road:
 One-time migration and long-term launch now use repo-owned entrypoints:
 
 ```bash
-# First, fully quit any real Google Chrome process still using the default root
-# under ~/Library/Application Support/Google/Chrome.
+# First, fully quit any real Google Chrome process still using the default
+# macOS Chrome profile root.
 python3 scripts/migrate_dealwatch_chrome_profile.py --dry-run
 python3 scripts/migrate_dealwatch_chrome_profile.py --apply
 python3 scripts/check_runtime_env.py --target startup --env-file .env

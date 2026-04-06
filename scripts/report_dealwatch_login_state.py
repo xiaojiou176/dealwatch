@@ -11,6 +11,9 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
+SRC_ROOT = PROJECT_ROOT / "src"
+if str(SRC_ROOT) not in sys.path:
+    sys.path.insert(0, str(SRC_ROOT))
 
 from playwright.sync_api import sync_playwright
 
@@ -25,6 +28,7 @@ from scripts.shared.browser_lane_targets import (
     BrowserLaneTargetSpec,
     target_matches_existing_url_for_mode,
 )
+from dealwatch.infra.output_redaction import sanitize_local_output
 
 
 def parse_args() -> argparse.Namespace:
@@ -227,6 +231,7 @@ def select_context_for_target(contexts: list[Any], target: BrowserLaneTargetSpec
 
 
 def render_text(payload: dict[str, Any]) -> str:
+    payload = sanitize_local_output(payload)
     lines = [
         "DealWatch browser login-state report",
         f"cdp_url={payload['cdp_url']}",
@@ -279,7 +284,7 @@ def main() -> int:
         ) from exc
 
     if args.json:
-        print(json.dumps(payload, indent=2, ensure_ascii=False))
+        print(json.dumps(sanitize_local_output(payload), indent=2, ensure_ascii=False))
     else:
         print(render_text(payload))
     return 0
