@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# DealWatch managed hook. Installed via python3 scripts/install_git_hooks.py.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+cd "$ROOT"
+
+if ! command -v actionlint >/dev/null 2>&1; then
+  echo "DealWatch pre-push refused: actionlint is required. Install it first." >&2
+  exit 1
+fi
+
+echo "[pre-push] git diff --check"
+git diff --check
+
+echo "[pre-push] actionlint"
+actionlint .github/workflows/*.yml
+
+echo "[pre-push] verify_host_process_safety"
+python3 scripts/verify_host_process_safety.py
+
+echo "[pre-push] verify_sensitive_surface"
+python3 scripts/verify_sensitive_surface.py
+
+echo "[pre-push] verify_tracked_artifacts"
+python3 scripts/verify_tracked_artifacts.py
+
+echo "[pre-push] verify_ci_runner_contract"
+python3 scripts/verify_ci_runner_contract.py
+
+echo "[pre-push] verify_root_allowlist"
+python3 scripts/verify_root_allowlist.py

@@ -27,6 +27,7 @@ The goal is not to add noise. The best contribution is one that makes DealWatch 
 ```bash
 ./scripts/bootstrap.sh
 cp .env.example .env
+python3 scripts/install_git_hooks.py
 PYTHONPATH=src uv run python -m dealwatch maintenance --dry-run
 pre-commit run --all-files
 ```
@@ -63,6 +64,8 @@ python3 scripts/verify_site_surface.py
 python3 scripts/verify_schema_contract.py
 python3 scripts/verify_root_allowlist.py
 python3 scripts/verify_store_capability_registry.py
+actionlint .github/workflows/*.yml
+uvx --from zizmor==1.23.1 zizmor --persona regular --no-progress .github/workflows
 cd frontend && pnpm build
 ```
 
@@ -84,6 +87,9 @@ These are the branch-protection checks currently enforced on `main` by GitHub re
 - `product-smoke`
 - `CodeQL`
 - `secret-hygiene`
+- `Dependency Review`
+- `workflow-hygiene`
+- `trivy`
 
 ### Credentialed Remote Verification
 
@@ -150,8 +156,10 @@ Run these checks before opening a pull request:
 ```bash
 gitleaks dir . --no-banner --redact
 gitleaks git . --no-banner --redact
+trufflehog git --no-update file://"$PWD"
 ./scripts/run_git_secrets_audit.sh --scan
 ./scripts/run_git_secrets_audit.sh --scan-history
+./scripts/run_fresh_clone_secret_scan.sh
 ```
 
 Repository note:
