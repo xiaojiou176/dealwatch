@@ -1,0 +1,22 @@
+{
+  "name": "dealwatch",
+  "transport": "stdio",
+  "command": "uv",
+  "args": [
+    "run",
+    "python",
+    "-m",
+    "dealwatch.mcp",
+    "serve",
+    "--transport",
+    "stdio"
+  ],
+  "cwd": "/absolute/path/to/dealwatch",
+  "env": {
+    "PYTHONPATH": "src"
+  },
+  "notes": [
+    "This is a client-agnostic launch record, not an official config syntax for any single tool.",
+    "Use it to map the DealWatch MCP stdio process into Claude Code, Codex, OpenHands, OpenCode, OpenClaw, or another stdio-capable client."
+  ]
+}

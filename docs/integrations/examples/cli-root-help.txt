@@ -1,0 +1,22 @@
+Usage: python -m dealwatch <command> [...].
+
+Runtime commands:
+  server             Run the FastAPI product API.
+  worker             Run the APScheduler product worker.
+  run-due            Execute due product tasks once.
+
+Builder discovery commands:
+  builder-starter-pack Print the repo-owned read-only builder contract as JSON.
+  builder-client-config Print one or all repo-owned builder client config exports.
+
+Operator-only maintainer commands:
+  bootstrap-owner    Bootstrap the product owner in PostgreSQL.
+  maintenance        Run product runtime maintenance for .runtime-cache.
+  probe-live         Maintainer-only browser debug lane probe.
+  diagnose-live      Maintainer-only browser debug lane diagnosis.
+  support-bundle     Write a maintainer-only browser debug support bundle.
+
+Legacy bridge commands:
+  legacy-import      Run the deprecated SQLite bridge importer.
+  legacy-maintenance Run the deprecated SQLite bridge maintenance tasks.
+  legacy             Deprecated alias for the legacy bridge commands.

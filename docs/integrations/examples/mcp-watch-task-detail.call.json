@@ -1,0 +1,6 @@
+{
+  "tool": "get_watch_task_detail",
+  "arguments": {
+    "task_id": "task_123"
+  }
+}

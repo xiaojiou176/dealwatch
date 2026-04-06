@@ -1,0 +1,190 @@
+{
+  "surface_version": "phase1",
+  "product_shape": {
+    "name": "DealWatch",
+    "positioning": "AI-enhanced, compare-first grocery price intelligence",
+    "runtime": "local-first",
+    "builder_posture": "read-only-first"
+  },
+  "launch_contract": {
+    "cli_discovery": "PYTHONPATH=src uv run python -m dealwatch --help",
+    "cli_builder_starter_pack": "PYTHONPATH=src uv run python -m dealwatch builder-starter-pack --json",
+    "cli_builder_client_config": "PYTHONPATH=src uv run python -m dealwatch builder-client-config <client> --json",
+    "cli_builder_client_configs": "PYTHONPATH=src uv run python -m dealwatch builder-client-config --all --json",
+    "http_server": "PYTHONPATH=src uv run python -m dealwatch server",
+    "mcp_inventory": "PYTHONPATH=src uv run python -m dealwatch.mcp list-tools --json",
+    "mcp_client_starters": "PYTHONPATH=src uv run python -m dealwatch.mcp client-starters --json",
+    "mcp_stdio": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+    "mcp_streamable_http": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport streamable-http",
+    "mcp_streamable_http_endpoint": "http://127.0.0.1:8000/mcp",
+    "http_builder_client_config": "GET /api/runtime/builder-client-config/{client}",
+    "http_builder_client_configs": "GET /api/runtime/builder-client-configs",
+    "mcp_builder_client_config": "get_builder_client_config",
+    "mcp_builder_client_configs": "list_builder_client_configs"
+  },
+  "safe_first_loops": {
+    "http": [
+      "GET /api/health",
+      "GET /api/runtime/readiness",
+      "GET /api/runtime/builder-starter-pack",
+      "POST /api/compare/preview",
+      "GET /api/watch-tasks or GET /api/watch-groups"
+    ],
+    "mcp": [
+      "list_tools",
+      "get_runtime_readiness",
+      "get_builder_starter_pack",
+      "compare_preview",
+      "list_watch_tasks or list_watch_groups"
+    ]
+  },
+  "stable_now": [
+    "read-only MCP tool inventory",
+    "runtime readiness reads",
+    "builder starter pack reads",
+    "builder client config reads",
+    "builder client config bundle reads",
+    "compare preview",
+    "watch task and watch group reads",
+    "recovery inbox reads",
+    "notification settings reads",
+    "store onboarding cockpit reads"
+  ],
+  "deferred": [
+    "write-side MCP",
+    "hosted auth",
+    "formal SDK packaging",
+    "generic remote operator automation",
+    "public recommendation surface"
+  ],
+  "internal_only": [
+    "maintenance",
+    "bootstrap-owner",
+    "legacy bridge commands",
+    "provider webhook paths",
+    "maintainer-only browser debug commands"
+  ],
+  "client_starters": {
+    "claude_code": "docs/integrations/prompts/claude-code-starter.md",
+    "codex": "docs/integrations/prompts/codex-starter.md",
+    "openhands": "docs/integrations/prompts/openhands-starter.md",
+    "opencode": "docs/integrations/prompts/opencode-starter.md",
+    "openclaw": "docs/integrations/prompts/openclaw-starter.md"
+  },
+  "client_skill_cards": {
+    "claude_code": "docs/integrations/skills/claude-code-readonly-builder-skill.md",
+    "codex": "docs/integrations/skills/codex-readonly-builder-skill.md",
+    "openhands": "docs/integrations/skills/openhands-readonly-builder-skill.md",
+    "opencode": "docs/integrations/skills/opencode-readonly-builder-skill.md",
+    "openclaw": "docs/integrations/skills/openclaw-readonly-builder-skill.md"
+  },
+  "client_adapter_recipes": {
+    "claude_code": "docs/integrations/recipes/claude-code.md",
+    "codex": "docs/integrations/recipes/codex.md",
+    "openhands": "docs/integrations/recipes/openhands.md",
+    "opencode": "docs/integrations/recipes/opencode.md",
+    "openclaw": "docs/integrations/recipes/openclaw.md"
+  },
+  "client_wrapper_status": {
+    "claude_code": "official_wrapper_documented",
+    "codex": "official_wrapper_documented",
+    "openhands": "official_wrapper_documented",
+    "opencode": "official_wrapper_documented",
+    "openclaw": "official_wrapper_documented"
+  },
+  "client_wrapper_example_kind": {
+    "claude_code": "official",
+    "codex": "official",
+    "openhands": "official",
+    "opencode": "official",
+    "openclaw": "official"
+  },
+  "client_wrapper_examples": {
+    "claude_code": "docs/integrations/examples/claude-code.mcp.json",
+    "codex": "docs/integrations/examples/codex-mcp-config.toml",
+    "openhands": "docs/integrations/examples/openhands-config.toml",
+    "opencode": "docs/integrations/examples/opencode.jsonc",
+    "openclaw": "docs/integrations/examples/openclaw-mcp-servers.json"
+  },
+  "client_wrapper_sources": {
+    "claude_code": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+    "codex": "https://developers.openai.com/codex/mcp/",
+    "openhands": "https://docs.openhands.dev/openhands/usage/cli/mcp-servers",
+    "opencode": "https://opencode.ai/docs/mcp-servers/",
+    "openclaw": "https://docs.openclaw.ai/cli/mcp"
+  },
+  "client_wrapper_surfaces": {
+    "claude_code": "project_.mcp.json_or_claude_mcp_add",
+    "codex": "config_toml_mcp_servers",
+    "openhands": "config_toml_mcp_stdio_servers",
+    "opencode": "opencode_jsonc_mcp_local_entry",
+    "openclaw": "mcp_servers_registry_json"
+  },
+  "skill_pack": {
+    "path": "docs/integrations/skills/dealwatch-readonly-builder-skill.md",
+    "intent": "Copyable builder skill card for coding agents that should stay inside the current read-only DealWatch contract."
+  },
+  "docs": {
+    "builder_pack": "docs/integrations/README.md",
+    "config_recipes": "docs/integrations/config-recipes.md",
+    "prompt_starters": "docs/integrations/prompt-starters.md",
+    "examples": "docs/integrations/examples/README.md",
+    "skills": "docs/integrations/skills/README.md",
+    "substrate_phase1": "docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md"
+  },
+  "public_builder_page": "site/builders.html",
+  "warning": "This static builder starter pack mirrors repo-owned starter and distribution-candidate metadata for the public proof surface. It does not prove a hosted runtime, official listing, or write-capable MCP surface.",
+  "repo_distribution_artifacts": {
+    "claude_code_bundle": "plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+    "codex_bundle": "plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+    "claude_marketplace": ".claude-plugin/marketplace.json",
+    "codex_marketplace": ".agents/plugins/marketplace.json"
+  },
+  "docs_urls": {
+    "builder_pack": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md",
+    "config_recipes": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md",
+    "prompt_starters": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompt-starters.md",
+    "examples": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/README.md",
+    "skills": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/README.md",
+    "substrate_phase1": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md"
+  },
+  "public_builder_page_url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+  "client_starter_urls": {
+    "claude_code": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/claude-code-starter.md",
+    "codex": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/codex-starter.md",
+    "openhands": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+    "opencode": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+    "openclaw": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md"
+  },
+  "client_skill_card_urls": {
+    "claude_code": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/claude-code-readonly-builder-skill.md",
+    "codex": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/codex-readonly-builder-skill.md",
+    "openhands": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+    "opencode": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/opencode-readonly-builder-skill.md",
+    "openclaw": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md"
+  },
+  "client_adapter_recipe_urls": {
+    "claude_code": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/claude-code.md",
+    "codex": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/codex.md",
+    "openhands": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md",
+    "opencode": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md",
+    "openclaw": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md"
+  },
+  "client_wrapper_example_urls": {
+    "claude_code": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/claude-code.mcp.json",
+    "codex": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/codex-mcp-config.toml",
+    "openhands": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openhands-config.toml",
+    "opencode": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc",
+    "openclaw": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openclaw-mcp-servers.json"
+  },
+  "export_kind": "public_builder_starter_pack",
+  "static_surface": "github_pages_proof",
+  "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+  "mirror_url": "https://xiaojiou176.github.io/dealwatch/data/builder-starter-pack.json",
+  "repo_distribution_artifact_urls": {
+    "claude_code_bundle": "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+    "codex_bundle": "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+    "claude_marketplace": "https://github.com/xiaojiou176/dealwatch/blob/main/.claude-plugin/marketplace.json",
+    "codex_marketplace": "https://github.com/xiaojiou176/dealwatch/blob/main/.agents/plugins/marketplace.json"
+  }
+}
