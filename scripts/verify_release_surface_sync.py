@@ -13,9 +13,9 @@ SITE_BUILDERS = ROOT / "site" / "builders.html"
 SITE_LLMS = ROOT / "site" / "llms.txt"
 SITE_PROOF = ROOT / "site" / "proof.html"
 SITE_FEED = ROOT / "site" / "feed.xml"
-LATEST_RELEASE_URL = "https://github.com/xiaojiou176/dealwatch/releases/latest"
-RELEASE_HISTORY_URL = "https://github.com/xiaojiou176/dealwatch/releases"
-CHANGELOG_URL = "https://github.com/xiaojiou176/dealwatch/blob/main/CHANGELOG.md"
+LATEST_RELEASE_URL = "https://github.com/xiaojiou176-open/dealwatch/releases/latest"
+RELEASE_HISTORY_URL = "https://github.com/xiaojiou176-open/dealwatch/releases"
+CHANGELOG_URL = "https://github.com/xiaojiou176-open/dealwatch/blob/main/CHANGELOG.md"
 
 
 def extract_latest_release_tag(changelog: str) -> str | None:

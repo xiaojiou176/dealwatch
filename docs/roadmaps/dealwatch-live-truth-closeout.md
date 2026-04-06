@@ -17,26 +17,28 @@ For the full hard-cut split, use the dated overlay:
 
 ## Current Live/Public Verdict
 
-> **Live/public verdict:** the rebuilt canonical GitHub repository and GitHub Pages surfaces are reachable, while the Render API and WebUI still return `404`, so the remaining blockers stay on the external platform side.
+> **Live/public verdict:** the rebuilt canonical GitHub repository and GitHub Pages surfaces are reachable, while the Render API and WebUI still return `404`, GitHub still reports `usesCustomOpenGraphImage=false`, and PyPI still serves the stale `dealwatch==1.0.0` metadata, so the remaining blockers stay on the external platform side.
 
 ## Fresh Live/Public Matrix
 
 | Surface | Fresh live truth after hard-cut | Status |
 | --- | --- | --- |
-| Canonical GitHub repo | `https://github.com/xiaojiou176/dealwatch` is reachable | Pass |
-| GitHub Pages root | `https://xiaojiou176.github.io/dealwatch/` returns `200` | Pass |
-| GitHub Pages proof | `https://xiaojiou176.github.io/dealwatch/proof.html` returns `200` | Pass |
-| GitHub Pages FAQ | `https://xiaojiou176.github.io/dealwatch/faq.html` returns `200` | Pass |
+| Canonical GitHub repo | `https://github.com/xiaojiou176-open/dealwatch` is reachable | Pass |
+| GitHub Pages root | `https://xiaojiou176-open.github.io/dealwatch/` returns `200` | Pass |
+| GitHub Pages proof | `https://xiaojiou176-open.github.io/dealwatch/proof.html` returns `200` | Pass |
+| GitHub Pages FAQ | `https://xiaojiou176-open.github.io/dealwatch/faq.html` returns `200` | Pass |
 | Old public repo entry | no longer serves the retired old public repo | Pass |
 | Render API | `https://dealwatch-api.onrender.com/api/health` returns `404` | Blocked |
 | Render WebUI | `https://dealwatch-webui.onrender.com/` returns `404` | Blocked |
-| GitHub social preview selection | still requires GitHub UI confirmation | External/UI-only |
+| GitHub social preview selection | GraphQL still reports `usesCustomOpenGraphImage=false` | External/UI-only |
+| PyPI package surface | `dealwatch==1.0.0` still points at the pre-cutover personal-owner URLs | External/non-GitHub |
 
 ## Exact Remaining External Blockers
 
 1. Render API still returns `404`.
 2. Render WebUI still returns `404`.
-3. GitHub social preview selection still requires UI confirmation.
+3. GitHub GraphQL still reports `usesCustomOpenGraphImage=false`, so the desired social preview image is not active yet and must still be enabled in the GitHub UI.
+4. PyPI `dealwatch==1.0.0` still exists and still points at the pre-cutover personal-owner URLs, but repo-side automation cannot remove or reassign that package without a separate PyPI authority path.
 
 ## What This File Does Not Claim
 
