@@ -18,7 +18,7 @@ echo ""
 #########################################################
 # Step 1: Check Python version
 #########################################################
-echo "[1/6] Checking Python version..."
+echo "[1/7] Checking Python version..."
 if ! command -v python3 &> /dev/null; then
     echo "ERROR: python3 was not found. Install Python 3.11+ first."
     exit 1
@@ -38,7 +38,7 @@ echo ""
 #########################################################
 # Step 2: Check uv
 #########################################################
-echo "[2/6] Checking uv..."
+echo "[2/7] Checking uv..."
 if ! command -v uv &> /dev/null; then
     echo "ERROR: uv was not found. Install uv first, then rerun setup."
     exit 1
@@ -50,7 +50,7 @@ echo ""
 #########################################################
 # Step 3: Sync dependencies
 #########################################################
-echo "[3/6] Syncing dependencies with uv..."
+echo "[3/7] Syncing dependencies with uv..."
 uv sync --frozen --group dev
 
 echo "OK: dependencies installed"
@@ -59,7 +59,7 @@ echo ""
 #########################################################
 # Step 4: Install the Playwright browser runtime
 #########################################################
-echo "[4/6] Installing Playwright browser runtime..."
+echo "[4/7] Installing Playwright browser runtime..."
 uv run python -m playwright install chromium
 echo "OK: Playwright browser runtime installed"
 echo ""
@@ -67,7 +67,7 @@ echo ""
 #########################################################
 # Step 5: Prepare configuration
 #########################################################
-echo "[5/6] Preparing configuration..."
+echo "[5/7] Preparing configuration..."
 if [ ! -f ".env" ]; then
     if [ -f ".env.example" ]; then
         cp .env.example .env
@@ -84,7 +84,14 @@ echo ""
 #########################################################
 # Step 6: Verify the install
 #########################################################
-echo "[6/6] Verifying the install..."
+echo "[6/7] Installing repo-managed Git hooks..."
+python3 scripts/install_git_hooks.py || echo "WARNING: git hook installation skipped or failed."
+echo ""
+
+#########################################################
+# Step 7: Verify the install
+#########################################################
+echo "[7/7] Verifying the install..."
 uv run python -c "import aiosqlite; print('✓ aiosqlite: OK')" || echo "❌ aiosqlite: FAILED"
 uv run python -c "import playwright; print('✓ playwright: OK')" || echo "❌ playwright: FAILED"
 uv run python -c "import pydantic; print('✓ pydantic: OK')" || echo "❌ pydantic: FAILED"
@@ -106,6 +113,7 @@ echo "   - SMTP_*: only if you want SMTP email delivery"
 echo ""
 echo "2. Run the first verification pass:"
 echo "   PYTHONPATH=src uv run python -m dealwatch maintenance --dry-run"
+echo "   python3 scripts/install_git_hooks.py"
 echo "   PYTHONPATH=src uv run python -m dealwatch server"
 echo "   PYTHONPATH=src uv run python -m dealwatch worker"
 echo "   # Or use the legacy bridge:"
