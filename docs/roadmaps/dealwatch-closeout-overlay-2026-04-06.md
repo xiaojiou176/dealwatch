@@ -13,7 +13,7 @@ Use this file when you need the exact split between:
 
 ## One-Line Summary
 
-> The old local mainline was preserved into local rollback assets, a new clean public canonical repo took over `xiaojiou176-open/dealwatch`, the public release surface was reduced to a single reissued `v0.1.2`, and the remaining blockers are now external Render `404`, GitHub UI-only social preview confirmation, and the unresolved PyPI package question.
+> The old local mainline was captured during hard-cut truth anchoring, a new clean public canonical repo took over `xiaojiou176-open/dealwatch`, the public release surface was reduced to a single reissued `v0.1.2`, the temporary local rollback assets were deleted after verification, and the remaining blockers are now external Render `404`, an inactive GitHub social preview custom image, and the unresolved PyPI package question.
 
 ## Archive / Context Says
 
@@ -24,7 +24,7 @@ The old canonical repo had:
 - multiple review/process-noise commits such as `sign off` / `review-fix`
 - stale closeout docs and stale public-entry narratives
 
-That history is preserved only in local rollback assets, but it is no longer the public canonical history.
+Those facts were recorded during the hard-cut truth-anchor phase. The temporary local rollback assets have since been deleted, so this dated overlay is now the repo-owned audit record of the pre-cutover history shape.
 
 ## Repo-Local Says
 
@@ -88,6 +88,6 @@ Fresh public probes after cutover say:
 | Ledger | Current call |
 | --- | --- |
 | repo-side engineering | clean after hard-cut |
-| delivery landed | clean once new canonical repo is pushed and verified |
-| git closure | clean once archive/private + new canonical + branch protection + zero open PRs all hold |
-| external blocker | Render `404`, social preview UI-only confirmation, and the PyPI package ownership/removal path |
+| delivery landed | clean on the current public canonical repo |
+| git closure | clean on Git/GitHub surfaces; only `main` remains and the archive repo is gone |
+| external blocker | Render `404`, inactive social preview custom image, and the PyPI package ownership/removal path |

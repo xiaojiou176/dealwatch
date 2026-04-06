@@ -7,7 +7,7 @@ This ledger records what the rebuilt canonical repository proves after the April
 In plain English:
 
 - the public canonical repo was rebuilt onto a clean linear history
-- the old canonical repo is no longer the public source of truth and no online archive repo remains
+- the old canonical repo is no longer the public source of truth, no online archive repo remains, and the temporary local hard-cut backups were deleted after verification
 - this file only talks about **repo-owned truth**
 - live Render status still belongs to the separate live-truth ledger
 
@@ -23,7 +23,7 @@ That is the honest call because:
 
 - the rebuilt repo preserves the current product tree while discarding process-noise history
 - the rebuilt repo keeps the current public entry `xiaojiou176-open/dealwatch`
-- the old public repo was retired and the temporary archive repo was deleted after verification
+- the old public repo was retired and the temporary archive repo plus local hard-cut backups were deleted after verification
 - repo-owned governance gates, hook install path, and closeout ledgers were re-landed on the clean history
 
 ## Current Repo-Side Snapshot
@@ -34,7 +34,7 @@ That is the honest call because:
 | Default branch | `main` |
 | Clean-history commit count target | `<= 8` |
 | Current public release set | `v0.1.2` only |
-| Old repo role | local rollback assets only; no online archive repo remains |
+| Old repo role | no live repo-owned archive remains; truth is preserved in the dated closeout ledgers |
 | Open PRs | `0` |
 | Open issues | `0` |
 | Open Dependabot alerts | `0` |
@@ -93,12 +93,12 @@ Why:
 - carrying those forward would re-pollute the rebuilt public release story
 - the rebuilt public repo therefore reissues `v0.1.2` as the only canonical public release
 
-The earlier release objects and legacy tag story now belong only to the local rollback assets, not the rebuilt public repo.
+The earlier release objects and legacy tag story are no longer kept as repo-owned rollback assets. Their existence is now preserved only by the dated closeout ledgers and the external platform residue those ledgers describe.
 
 ## Remaining Repo-Side vs External Split
 
 - **repo-side engineering:** closed
-- **Git/GitHub closure:** closed once remote checks, branch protection, and public entry all match the rebuilt repo
+- **Git/GitHub closure:** closed on the current canonical repo and GitHub surface
 - **external blockers:** Render endpoints, GitHub social preview UI selection, and the unresolved PyPI package ownership/removal path remain outside repo-owned control
 
 ## Related Ledgers
