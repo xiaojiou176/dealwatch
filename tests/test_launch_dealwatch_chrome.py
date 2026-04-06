@@ -12,6 +12,8 @@ from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import unquote
 
+from scripts.shared.browser_lane_contract import DEFAULT_SHARED_CHROME_ROOT
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "launch_dealwatch_chrome.sh"
@@ -138,7 +140,7 @@ def test_launch_script_rejects_legacy_shared_root(tmp_path: Path) -> None:
     env_file.write_text(
         "\n".join(
             [
-                'CHROME_USER_DATA_DIR="<default-macos-chrome-user-data-root>"',
+                f'CHROME_USER_DATA_DIR="{DEFAULT_SHARED_CHROME_ROOT}"',
                 "CHROME_PROFILE_NAME=dealwatch",
                 "CHROME_PROFILE_DIRECTORY=Profile 21",
             ]

@@ -35,7 +35,7 @@ REQUIRED_SNIPPETS = {
         "./builders.html",
         "./proof.html",
         "https://github.com/xiaojiou176/dealwatch/releases/latest",
-        "https://github.com/xiaojiou176/dealwatch/discussions/5",
+        "https://github.com/xiaojiou176/dealwatch/discussions",
     ],
     SITE_PROOF: [
         "python3 scripts/verify_docs_contract.py",

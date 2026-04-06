@@ -97,6 +97,9 @@ With `GITHUB_TOKEN`, the remote verifier now also checks:
 
 - the current latest release object
 - the expected public discussion threads used by the site community surface
+- the current open code-scanning alert count
+- the current open secret-scanning alert count
+- the current open Dependabot alert count
 
 ### Manual-Admin Verification
 

@@ -11,7 +11,8 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ENV_FILE = PROJECT_ROOT / ".env"
-DEFAULT_SOURCE_ROOT = Path("~/Library/Application Support/Google/Chrome").expanduser()
+_MACOS_SHARED_CHROME_ROOT_PARTS = ("Library", "Application Support", "Google", "Chrome")
+DEFAULT_SOURCE_ROOT = Path.home().joinpath(*_MACOS_SHARED_CHROME_ROOT_PARTS)
 DEFAULT_TARGET_ROOT = Path("~/.cache/dealwatch/browser/chrome-user-data").expanduser()
 EXPECTED_PROFILE_NAME = "dealwatch"
 DEFAULT_REMOTE_DEBUG_PORT = 9333

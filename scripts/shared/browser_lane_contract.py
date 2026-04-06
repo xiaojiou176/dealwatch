@@ -9,10 +9,9 @@ DEFAULT_ENV_FILE = Path(__file__).resolve().parents[2] / ".env"
 DEFAULT_DEDICATED_CHROME_USER_DATA_DIR = str(
     Path("~/.cache/dealwatch/browser/chrome-user-data").expanduser()
 )
-DEFAULT_SHARED_CHROME_ROOT = str(
-    Path("~/Library/Application Support/Google/Chrome").expanduser()
-)
-LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/Library/Application Support/Google/Chrome"
+_MACOS_SHARED_CHROME_ROOT_PARTS = ("Library", "Application Support", "Google", "Chrome")
+DEFAULT_SHARED_CHROME_ROOT = str(Path.home().joinpath(*_MACOS_SHARED_CHROME_ROOT_PARTS))
+LEGACY_SHARED_CHROME_ROOT_SUFFIX = "/" + "/".join(_MACOS_SHARED_CHROME_ROOT_PARTS)
 
 
 @dataclass(frozen=True, slots=True)
