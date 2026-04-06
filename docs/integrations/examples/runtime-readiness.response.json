@@ -1,0 +1,107 @@
+{
+  "status": "degraded",
+  "ready": false,
+  "checked_at": "2026-04-02T00:00:00Z",
+  "headline": "Check the runtime contract before you trust the next run.",
+  "generated_at": "2026-04-02T00:00:00Z",
+  "overall_status": "degraded",
+  "required_ready_count": 3,
+  "warning_count": 2,
+  "blocked_count": 0,
+  "database": {
+    "key": "database",
+    "label": "Database",
+    "severity": "required",
+    "status": "ready",
+    "reason": "database_connection_ok",
+    "message": "The product database connection is available and the runtime uses PostgreSQL.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {
+      "database_backend": "postgresql+asyncpg"
+    }
+  },
+  "owner_existence": {
+    "key": "owner",
+    "label": "Owner bootstrap",
+    "severity": "advisory",
+    "status": "warning",
+    "reason": "owner_missing",
+    "message": "No owner record exists yet. Run bootstrap-owner or trigger the first owner bootstrap path.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {
+      "owner_email": null,
+      "owner_status": null
+    }
+  },
+  "store_bindings": {
+    "key": "stores",
+    "label": "Store runtime switches",
+    "severity": "required",
+    "status": "ready",
+    "reason": "stores_enabled",
+    "message": "2 enabled store runtime switch(es) are ready.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {
+      "enabled_store_count": 2,
+      "enabled_store_keys": [
+        "weee",
+        "safeway"
+      ],
+      "enabled_bound_store_keys": [
+        "weee",
+        "safeway"
+      ],
+      "compare_enabled_store_keys": [
+        "weee",
+        "safeway"
+      ]
+    }
+  },
+  "notification_path": {
+    "key": "notifications",
+    "label": "Notification path",
+    "severity": "required",
+    "status": "ready",
+    "reason": "notification_delivery_ready",
+    "message": "Notification delivery path is configured.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {}
+  },
+  "startup_preflight": {
+    "key": "startup_preflight",
+    "label": "Runtime preflight",
+    "severity": "required",
+    "status": "ready",
+    "reason": "runtime_preflight_ok",
+    "message": "Startup preflight passed.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {
+      "blocker_keys": [],
+      "warning_keys": []
+    }
+  },
+  "smoke_evidence": {
+    "key": "smoke",
+    "label": "Smoke evidence",
+    "severity": "advisory",
+    "status": "warning",
+    "reason": "smoke_artifacts_missing",
+    "message": "No fresh smoke artifact directory was found yet.",
+    "checked_at": "2026-04-02T00:00:00Z",
+    "detail": {
+      "artifact_dir": null
+    }
+  },
+  "checks": [
+    {
+      "key": "database",
+      "label": "Database",
+      "severity": "required",
+      "status": "ready",
+      "reason": "connected",
+      "message": "Database connection OK",
+      "checked_at": "2026-04-02T00:00:00Z",
+      "detail": {}
+    }
+  ]
+}

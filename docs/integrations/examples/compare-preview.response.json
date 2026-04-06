@@ -1,0 +1,26 @@
+{
+  "submitted_count": 2,
+  "resolved_count": 2,
+  "comparisons": [],
+  "matches": [],
+  "compare_evidence": {},
+  "recommended_next_step_hint": {},
+  "risk_notes": [],
+  "risk_note_items": [],
+  "ai_explain": {
+    "status": "ok",
+    "label": "AI explanation",
+    "title": "Compare summary",
+    "summary": "This is an illustrative shape drawn from the stable schema/tests, not a hosted public fixture.",
+    "bullets": [],
+    "sections": [],
+    "evidence_refs": [],
+    "caution_notes": [],
+    "uncertainty_notes": [],
+    "provider": {
+      "provider": "illustrative",
+      "model": null,
+      "timeout_seconds": 8.0
+    }
+  }
+}

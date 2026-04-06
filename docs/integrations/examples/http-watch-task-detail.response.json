@@ -1,0 +1,28 @@
+{
+  "task": {
+    "id": "task-demo-1",
+    "store_key": "weee",
+    "title": "Asian Honey Pears 3ct",
+    "zip_code": "98004"
+  },
+  "compare_context": {
+    "candidate_key": "asian honey pears 3ct | golden orchard | 3 ct",
+    "merchant_key": "weee",
+    "brand_hint": "golden orchard",
+    "size_hint": "3 ct"
+  },
+  "observations": [
+    {
+      "listed_price": 4.2
+    }
+  ],
+  "runs": [
+    {
+      "status": "succeeded",
+      "artifact_evidence": {
+        "summary_exists": true,
+        "delivery_count": 1
+      }
+    }
+  ]
+}

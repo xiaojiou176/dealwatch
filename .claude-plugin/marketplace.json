@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "dealwatch-builder-pack",
+      "displayName": "DealWatch Builder Pack",
+      "description": "Repo-owned builder frontdoor for DealWatch with local MCP wiring, safe-first guidance, and compare-first boundaries.",
+      "source": "./plugins/dealwatch-builder-pack"
+    }
+  ]
+}

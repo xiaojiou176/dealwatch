@@ -1,0 +1,10 @@
+{
+  "tool": "compare_preview",
+  "arguments": {
+    "submitted_urls": [
+      "https://www.sayweee.com/zh/product/Asian-Honey-Pears-3ct/5869",
+      "https://www.99ranch.com/product-details/1615424/8899/078895126389"
+    ],
+    "zip_code": "98004"
+  }
+}

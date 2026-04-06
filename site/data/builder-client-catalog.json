@@ -1,0 +1,322 @@
+{
+  "surface_version": "phase1",
+  "export_kind": "public_builder_client_catalog",
+  "static_surface": "github_pages_proof",
+  "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+  "catalog_url": "https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json",
+  "client_count": 5,
+  "client_ids": [
+    "claude-code",
+    "codex",
+    "openhands",
+    "opencode",
+    "openclaw"
+  ],
+  "docs": {
+    "builder_pack_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md",
+    "config_recipes_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md",
+    "examples_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/README.md",
+    "llms_url": "https://xiaojiou176.github.io/dealwatch/llms.txt"
+  },
+  "warning": "This static catalog mirrors repo-owned builder starter metadata and distribution-candidate metadata for the public proof surface. It does not prove a hosted runtime, official listing, or write-capable MCP surface.",
+  "clients": [
+    {
+      "client": "claude-code",
+      "display_name": "Claude Code",
+      "page_fragment": "#client-claude-code",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-claude-code",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "project_.mcp.json_or_claude_mcp_add",
+      "wrapper_source_url": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+      "wrapper_example_path": "docs/integrations/examples/claude-code.mcp.json",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/claude-code.mcp.json",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "list_watch_tasks or list_watch_groups",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned Claude Code plugin bundle plus builder pack. Marketplace-submission candidate only; not officially listed.",
+      "distribution_surface_kind": "official_marketplace",
+      "official_public_surface": {
+        "label": "Claude Code official marketplace",
+        "url": "https://code.claude.com/docs/en/plugins"
+      },
+      "distribution_candidate": "marketplace_submission_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        ".claude-plugin/marketplace.json",
+        "plugins/dealwatch-builder-pack/.mcp.json",
+        "plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/.claude-plugin/marketplace.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.mcp.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume write-side MCP exists.",
+        "Do not present DealWatch as a hosted SaaS.",
+        "Do not claim recommendation is already shipped."
+      ],
+      "docs": {
+        "prompt_path": "docs/integrations/prompts/claude-code-starter.md",
+        "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/claude-code-starter.md",
+        "skill_path": "docs/integrations/skills/claude-code-readonly-builder-skill.md",
+        "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/claude-code-readonly-builder-skill.md",
+        "recipe_path": "docs/integrations/recipes/claude-code.md",
+        "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/claude-code.md"
+      },
+      "read_surfaces": {
+        "cli": "PYTHONPATH=src uv run python -m dealwatch builder-client-config claude-code --json",
+        "http": "GET /api/runtime/builder-client-config/claude-code",
+        "mcp_tool": "get_builder_client_config"
+      }
+    },
+    {
+      "client": "codex",
+      "display_name": "Codex",
+      "page_fragment": "#client-codex",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-codex",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "config_toml_mcp_servers",
+      "wrapper_source_url": "https://developers.openai.com/codex/mcp/",
+      "wrapper_example_path": "docs/integrations/examples/codex-mcp-config.toml",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/codex-mcp-config.toml",
+      "recommended_transport": "streamable_http",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport streamable-http",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "one watch or group detail read",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned Codex plugin bundle plus repo marketplace entry. Plugin Directory candidate only; not officially listed.",
+      "distribution_surface_kind": "official_plugin_directory_and_repo_marketplace",
+      "official_public_surface": {
+        "label": "Codex Plugin Directory",
+        "url": "https://developers.openai.com/codex/plugins"
+      },
+      "distribution_candidate": "plugin_directory_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+        ".agents/plugins/marketplace.json",
+        "plugins/dealwatch-builder-pack/.mcp.json",
+        "plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/.agents/plugins/marketplace.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.mcp.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume a hosted platform exists.",
+        "Do not assume a packaged SDK exists.",
+        "Do not use MCP for durable writes."
+      ],
+      "docs": {
+        "prompt_path": "docs/integrations/prompts/codex-starter.md",
+        "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/codex-starter.md",
+        "skill_path": "docs/integrations/skills/codex-readonly-builder-skill.md",
+        "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/codex-readonly-builder-skill.md",
+        "recipe_path": "docs/integrations/recipes/codex.md",
+        "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/codex.md"
+      },
+      "read_surfaces": {
+        "cli": "PYTHONPATH=src uv run python -m dealwatch builder-client-config codex --json",
+        "http": "GET /api/runtime/builder-client-config/codex",
+        "mcp_tool": "get_builder_client_config"
+      }
+    },
+    {
+      "client": "openhands",
+      "display_name": "OpenHands",
+      "page_fragment": "#client-openhands",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-openhands",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "config_toml_mcp_stdio_servers",
+      "wrapper_source_url": "https://docs.openhands.dev/openhands/usage/cli/mcp-servers",
+      "wrapper_example_path": "docs/integrations/examples/openhands-config.toml",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openhands-config.toml",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenHands skill-pack candidate. The official public surface is the global skill registry; not officially listed.",
+      "distribution_surface_kind": "official_skill_registry",
+      "official_public_surface": {
+        "label": "OpenHands global skill registry",
+        "url": "https://docs.openhands.dev/overview/skills/public"
+      },
+      "distribution_candidate": "skill_registry_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "docs/integrations/prompts/openhands-starter.md",
+        "docs/integrations/recipes/openhands.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume destructive automation is safe.",
+        "Do not assume hosted multi-tenant auth exists.",
+        "Do not expose recommendation as a builder feature."
+      ],
+      "docs": {
+        "prompt_path": "docs/integrations/prompts/openhands-starter.md",
+        "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+        "skill_path": "docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "recipe_path": "docs/integrations/recipes/openhands.md",
+        "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md"
+      },
+      "read_surfaces": {
+        "cli": "PYTHONPATH=src uv run python -m dealwatch builder-client-config openhands --json",
+        "http": "GET /api/runtime/builder-client-config/openhands",
+        "mcp_tool": "get_builder_client_config"
+      }
+    },
+    {
+      "client": "opencode",
+      "display_name": "OpenCode",
+      "page_fragment": "#client-opencode",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-opencode",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "opencode_jsonc_mcp_local_entry",
+      "wrapper_source_url": "https://opencode.ai/docs/mcp-servers/",
+      "wrapper_example_path": "docs/integrations/examples/opencode.jsonc",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group detail reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenCode ecosystem candidate. The official public surface is the OpenCode ecosystem list; not officially listed.",
+      "distribution_surface_kind": "official_ecosystem_listing",
+      "official_public_surface": {
+        "label": "OpenCode ecosystem listing",
+        "url": "https://opencode.ai/docs/ecosystem/"
+      },
+      "distribution_candidate": "ecosystem_listing_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/examples/opencode.jsonc",
+        "docs/integrations/prompts/opencode-starter.md",
+        "docs/integrations/recipes/opencode.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume special write-side control exists.",
+        "Do not assume hosted auth exists.",
+        "Do not assume SDK semantics exist."
+      ],
+      "docs": {
+        "prompt_path": "docs/integrations/prompts/opencode-starter.md",
+        "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+        "skill_path": "docs/integrations/skills/opencode-readonly-builder-skill.md",
+        "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/opencode-readonly-builder-skill.md",
+        "recipe_path": "docs/integrations/recipes/opencode.md",
+        "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md"
+      },
+      "read_surfaces": {
+        "cli": "PYTHONPATH=src uv run python -m dealwatch builder-client-config opencode --json",
+        "http": "GET /api/runtime/builder-client-config/opencode",
+        "mcp_tool": "get_builder_client_config"
+      }
+    },
+    {
+      "client": "openclaw",
+      "display_name": "OpenClaw",
+      "page_fragment": "#client-openclaw",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-openclaw",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "mcp_servers_registry_json",
+      "wrapper_source_url": "https://docs.openclaw.ai/cli/mcp",
+      "wrapper_example_path": "docs/integrations/examples/openclaw-mcp-servers.json",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openclaw-mcp-servers.json",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenClaw registry candidate. The official public surface is ClawHub; not officially listed.",
+      "distribution_surface_kind": "clawhub_public_registry",
+      "official_public_surface": {
+        "label": "OpenClaw ClawHub registry",
+        "url": "https://docs.openclaw.ai/tools/clawhub"
+      },
+      "distribution_candidate": "registry_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/prompts/openclaw-starter.md",
+        "docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "docs/integrations/recipes/openclaw.md",
+        "plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "plugins/dealwatch-builder-pack/.codex-plugin/plugin.json"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.codex-plugin/plugin.json"
+      ],
+      "boundary_reminders": [
+        "Do not treat DealWatch as an OpenClaw runtime base.",
+        "Do not assume write-side MCP or operator automation is ready.",
+        "Do not treat local-first proof surfaces as hosted control plane guarantees."
+      ],
+      "docs": {
+        "prompt_path": "docs/integrations/prompts/openclaw-starter.md",
+        "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
+        "skill_path": "docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "recipe_path": "docs/integrations/recipes/openclaw.md",
+        "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md"
+      },
+      "read_surfaces": {
+        "cli": "PYTHONPATH=src uv run python -m dealwatch builder-client-config openclaw --json",
+        "http": "GET /api/runtime/builder-client-config/openclaw",
+        "mcp_tool": "get_builder_client_config"
+      }
+    }
+  ]
+}

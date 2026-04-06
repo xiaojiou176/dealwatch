@@ -1,0 +1,185 @@
+[
+  {
+    "arguments": [
+      {
+        "description": "Product URLs to compare without persisting durable state.",
+        "name": "submitted_urls",
+        "required": true,
+        "type": "list[str]"
+      },
+      {
+        "default": "00000",
+        "description": "ZIP code used for compare context.",
+        "name": "zip_code",
+        "required": false,
+        "type": "str"
+      }
+    ],
+    "category": "compare",
+    "description": "Preview compare-first pricing truth across multiple submitted product URLs without persisting tasks.",
+    "name": "compare_preview",
+    "read_only": true,
+    "recommended_order": 2,
+    "safe_first": true,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "watch-task",
+    "description": "List current watch tasks with their runtime truth summary.",
+    "name": "list_watch_tasks",
+    "read_only": true,
+    "recommended_order": 4,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [
+      {
+        "description": "Watch-task identifier returned by list or create flows.",
+        "name": "task_id",
+        "required": true,
+        "type": "str"
+      }
+    ],
+    "category": "watch-task",
+    "description": "Get one watch task detail, including observations, runs, and recovery truth.",
+    "name": "get_watch_task_detail",
+    "read_only": true,
+    "recommended_order": 5,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "watch-group",
+    "description": "List current watch groups with their compare-first runtime summary.",
+    "name": "list_watch_groups",
+    "read_only": true,
+    "recommended_order": 4,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [
+      {
+        "description": "Watch-group identifier returned by list or create flows.",
+        "name": "group_id",
+        "required": true,
+        "type": "str"
+      }
+    ],
+    "category": "watch-group",
+    "description": "Get one watch group detail, including decision explain and delivery truth.",
+    "name": "get_watch_group_detail",
+    "read_only": true,
+    "recommended_order": 5,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "runtime",
+    "description": "Inspect runtime readiness truth for database, stores, startup preflight, and smoke evidence.",
+    "name": "get_runtime_readiness",
+    "read_only": true,
+    "recommended_order": 1,
+    "safe_first": true,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "builder",
+    "description": "Return the read-only builder contract: launch commands, stable/deferred/internal-only surfaces, and starter docs for coding agents.",
+    "name": "get_builder_starter_pack",
+    "read_only": true,
+    "recommended_order": 3,
+    "safe_first": true,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "recovery",
+    "description": "Inspect the recovery inbox that separates task and group attention items.",
+    "name": "get_recovery_inbox",
+    "read_only": true,
+    "recommended_order": 6,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [
+      {
+        "default": 50,
+        "description": "Maximum number of delivery events to return.",
+        "name": "limit",
+        "required": false,
+        "type": "int"
+      }
+    ],
+    "category": "notification",
+    "description": "List recent notification delivery events without exposing provider secrets.",
+    "name": "list_notifications",
+    "read_only": true,
+    "recommended_order": 6,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "notification",
+    "description": "Read the effective notification settings without bootstrapping or mutating owner records.",
+    "name": "get_notification_settings",
+    "read_only": true,
+    "recommended_order": 6,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "store",
+    "description": "List store binding runtime switches together with capability metadata.",
+    "name": "list_store_bindings",
+    "read_only": true,
+    "recommended_order": 6,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "store",
+    "description": "Return the store onboarding cockpit truth surface: capability matrix, checklist, required files, commands, and registry consistency.",
+    "name": "get_store_onboarding_cockpit",
+    "read_only": true,
+    "recommended_order": 7,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [
+      {
+        "description": "Builder client key such as claude-code, codex, openhands, opencode, or openclaw.",
+        "name": "client",
+        "required": true,
+        "type": "str"
+      }
+    ],
+    "category": "builder",
+    "description": "Return one repo-owned builder client config export, including wrapper metadata and the copyable example content.",
+    "name": "get_builder_client_config",
+    "read_only": true,
+    "recommended_order": 4,
+    "safe_first": false,
+    "stability": "stable_now"
+  },
+  {
+    "arguments": [],
+    "category": "builder",
+    "description": "Return the repo-owned bundle of all builder client config exports in one read-only payload.",
+    "name": "list_builder_client_configs",
+    "read_only": true,
+    "recommended_order": 5,
+    "safe_first": false,
+    "stability": "stable_now"
+  }
+]

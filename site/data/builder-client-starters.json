@@ -1,0 +1,297 @@
+{
+  "surface_version": "phase1",
+  "export_kind": "public_builder_client_starters",
+  "static_surface": "github_pages_proof",
+  "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+  "mirror_url": "https://xiaojiou176.github.io/dealwatch/data/builder-client-starters.json",
+  "client_count": 5,
+  "client_ids": [
+    "claude-code",
+    "codex",
+    "openhands",
+    "opencode",
+    "openclaw"
+  ],
+  "warning": "This static client-starters mirror exposes prompt starters, skill cards, and distribution-candidate metadata as public proof assets. It does not prove a hosted runtime, official listing, or write-capable MCP surface.",
+  "docs_urls": {
+    "builder_pack_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md",
+    "prompt_starters_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompt-starters.md",
+    "skills_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/README.md",
+    "config_recipes_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md"
+  },
+  "clients": [
+    {
+      "client": "claude-code",
+      "display_name": "Claude Code",
+      "prompt_path": "docs/integrations/prompts/claude-code-starter.md",
+      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/claude-code-starter.md",
+      "prompt_markdown": "# DealWatch Starter Prompt For Claude Code\n\nUse this after registering the local stdio MCP server from [`../recipes/claude-code.md`](../recipes/claude-code.md):\n\n```bash\nPYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio\n```\n\n## Safe first objective\n\nUse DealWatch as a read-only compare-first truth source.\n\n## Must do\n\n1. Call `get_runtime_readiness` first.\n2. Call `get_builder_starter_pack` before deeper integration work.\n3. Use `compare_preview` before assuming a URL should become durable state.\n4. Prefer `list_watch_tasks`, `list_watch_groups`, `get_watch_task_detail`, `get_watch_group_detail`, `get_recovery_inbox`, and `get_store_onboarding_cockpit` for truth reads.\n\n## Must not do\n\n- Do not assume write-side MCP exists.\n- Do not present DealWatch as a hosted SaaS.\n- Do not claim recommendation is already shipped.\n\n## Starter prompt\n\n```text\nUse DealWatch as a local-first, read-only product truth source.\nFirst call get_runtime_readiness.\nThen call get_builder_starter_pack so the current repo-owned contract is explicit.\nIf the runtime is healthy enough, call compare_preview before making any assumptions about product identity.\nAfter compare_preview, stay on read-only surfaces: inspect watch tasks/groups, recovery inbox, notification settings, and store onboarding cockpit truth.\nDo not assume write-side MCP, hosted auth, SDK packaging, or recommendation support.\n```\n",
+      "skill_path": "docs/integrations/skills/claude-code-readonly-builder-skill.md",
+      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/claude-code-readonly-builder-skill.md",
+      "skill_markdown": "# DealWatch Builder Skill For Claude Code\n\nUse this skill when Claude Code is connected to DealWatch through the local MCP server or local HTTP runtime.\n\n## Goal\n\nTreat DealWatch as a local-first, compare-first, read-only product truth surface.\n\n## Do first\n\n1. inspect the shipped MCP tool inventory\n2. inspect runtime readiness\n3. inspect the builder starter pack contract\n4. run compare preview before assuming any URL deserves durable state\n5. stay on read-only product truth unless a human explicitly opens a separate operator lane\n\n## Hard boundaries\n\n- Do not present DealWatch as a hosted SaaS.\n- Do not present DealWatch as an official Claude Code plugin.\n- Do not invent write-side MCP.\n- Do not treat browser debug lane commands as public builder APIs.\n- Do not bypass compare preview and jump straight to durable state assumptions.\n",
+      "recipe_path": "docs/integrations/recipes/claude-code.md",
+      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/claude-code.md",
+      "wrapper_example_path": "docs/integrations/examples/claude-code.mcp.json",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/claude-code.mcp.json",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "project_.mcp.json_or_claude_mcp_add",
+      "wrapper_source_url": "https://docs.anthropic.com/en/docs/claude-code/mcp",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "list_watch_tasks or list_watch_groups",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned Claude Code plugin bundle plus builder pack. Marketplace-submission candidate only; not officially listed.",
+      "distribution_surface_kind": "official_marketplace",
+      "official_public_surface": {
+        "label": "Claude Code official marketplace",
+        "url": "https://code.claude.com/docs/en/plugins"
+      },
+      "distribution_candidate": "marketplace_submission_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        ".claude-plugin/marketplace.json",
+        "plugins/dealwatch-builder-pack/.mcp.json",
+        "plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/.claude-plugin/marketplace.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.mcp.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume write-side MCP exists.",
+        "Do not present DealWatch as a hosted SaaS.",
+        "Do not claim recommendation is already shipped."
+      ],
+      "page_fragment": "#client-claude-code",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-claude-code"
+    },
+    {
+      "client": "codex",
+      "display_name": "Codex",
+      "prompt_path": "docs/integrations/prompts/codex-starter.md",
+      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/codex-starter.md",
+      "prompt_markdown": "# DealWatch Starter Prompt For Codex\n\nUse this after connecting Codex to the local DealWatch MCP server or the local HTTP runtime.\nThe current repo-owned Codex wrapper translation lives in [`docs/integrations/recipes/codex.md`](../recipes/codex.md).\n\n## Safe first order\n\n1. `get_runtime_readiness`\n2. `get_builder_starter_pack`\n3. `compare_preview`\n4. `list_watch_tasks` or `list_watch_groups`\n5. one detail read\n6. `get_recovery_inbox`\n7. `get_store_onboarding_cockpit`\n\n## Boundary reminder\n\nCodex should treat DealWatch as:\n\n- local-first\n- read-only-first\n- compare-first\n- owner-scoped runtime truth\n\nCodex should **not** treat DealWatch as:\n\n- a hosted platform\n- a write-capable MCP control plane\n- a packaged SDK\n\n## Starter prompt\n\n```text\nConnect to DealWatch as a local read-only truth surface.\nStart with get_runtime_readiness, then get_builder_starter_pack, then compare_preview.\nUse the compare result to decide what to inspect next, but do not create or mutate product state through MCP.\nIf you need durable writes, maintenance, owner bootstrap, or webhook behavior, stop and surface that those paths are outside the current builder contract.\n```\n",
+      "skill_path": "docs/integrations/skills/codex-readonly-builder-skill.md",
+      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/codex-readonly-builder-skill.md",
+      "skill_markdown": "# DealWatch Builder Skill For Codex\n\nUse this skill when Codex is connected to DealWatch through the local MCP server or local HTTP runtime.\n\n## Goal\n\nTreat DealWatch as a local-first, compare-first, read-only decision backend.\n\n## Do first\n\n1. inspect the shipped MCP or HTTP inventory\n2. inspect runtime readiness\n3. inspect the builder starter pack contract\n4. run compare preview before assuming any URL deserves durable state\n5. stay on read-only product truth unless a human explicitly opens a separate operator lane\n\n## Hard boundaries\n\n- Do not present DealWatch as a hosted SaaS.\n- Do not present DealWatch as an official Codex plugin.\n- Do not claim DealWatch runs on Codex.\n- Do not invent write-side MCP.\n- Do not bypass compare preview and jump straight to durable state assumptions.\n",
+      "recipe_path": "docs/integrations/recipes/codex.md",
+      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/codex.md",
+      "wrapper_example_path": "docs/integrations/examples/codex-mcp-config.toml",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/codex-mcp-config.toml",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "config_toml_mcp_servers",
+      "wrapper_source_url": "https://developers.openai.com/codex/mcp/",
+      "recommended_transport": "streamable_http",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport streamable-http",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "one watch or group detail read",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned Codex plugin bundle plus repo marketplace entry. Plugin Directory candidate only; not officially listed.",
+      "distribution_surface_kind": "official_plugin_directory_and_repo_marketplace",
+      "official_public_surface": {
+        "label": "Codex Plugin Directory",
+        "url": "https://developers.openai.com/codex/plugins"
+      },
+      "distribution_candidate": "plugin_directory_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+        ".agents/plugins/marketplace.json",
+        "plugins/dealwatch-builder-pack/.mcp.json",
+        "plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.codex-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/.agents/plugins/marketplace.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.mcp.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/skills/dealwatch-readonly-builder/SKILL.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume a hosted platform exists.",
+        "Do not assume a packaged SDK exists.",
+        "Do not use MCP for durable writes."
+      ],
+      "page_fragment": "#client-codex",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-codex"
+    },
+    {
+      "client": "openhands",
+      "display_name": "OpenHands",
+      "prompt_path": "docs/integrations/prompts/openhands-starter.md",
+      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+      "prompt_markdown": "# DealWatch Starter Prompt For OpenHands\n\nUse this when OpenHands is consuming DealWatch through local MCP or local HTTP read paths.\nThe current wrapper translation lives in [`../recipes/openhands.md`](../recipes/openhands.md).\n\n## What OpenHands should optimize for\n\n- prove runtime readiness first\n- preview compare truth before durable state assumptions\n- read product truth without operator-side mutation\n\n## Safe tool / route flow\n\n1. `get_runtime_readiness`\n2. `get_builder_starter_pack`\n3. `compare_preview`\n4. inspect watch/group reads only if the compare result is useful\n5. inspect `get_recovery_inbox` and `get_store_onboarding_cockpit` when you need runtime or operator truth\n\n## Unsafe assumptions\n\n- write-side MCP is available\n- hosted multi-tenant auth exists\n- recommendation is already a builder-facing feature\n\n## Starter prompt\n\n```text\nTreat DealWatch as a local-first backend that exposes read-only compare, watch, runtime, notification, and store-onboarding truth.\nAlways check runtime readiness first.\nInspect the builder starter pack contract before you widen the plan.\nUse compare_preview as the safe first product action.\nKeep all automation on the read path unless a human explicitly authorizes operator-owned write flows outside the current builder contract.\n```\n",
+      "skill_path": "docs/integrations/skills/openhands-readonly-builder-skill.md",
+      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+      "skill_markdown": "# DealWatch Builder Skill For OpenHands\n\nUse this skill when OpenHands is connected to DealWatch through the local MCP server or local HTTP runtime.\n\n## Goal\n\nKeep OpenHands on the observation path inside DealWatch's local-first, read-only builder contract.\n\n## Do first\n\n1. inspect the shipped MCP or HTTP inventory\n2. inspect runtime readiness\n3. inspect the builder starter pack contract\n4. run compare preview before assuming any URL deserves durable state\n5. stay on read-only product truth unless a human explicitly opens a separate operator lane\n\n## Hard boundaries\n\n- Do not present DealWatch as a hosted SaaS.\n- Do not present DealWatch as an official OpenHands plugin.\n- Do not invent write-side MCP.\n- Do not assume destructive automation is safe by default.\n- Do not bypass compare preview and jump straight to durable state assumptions.\n",
+      "recipe_path": "docs/integrations/recipes/openhands.md",
+      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md",
+      "wrapper_example_path": "docs/integrations/examples/openhands-config.toml",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openhands-config.toml",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "config_toml_mcp_stdio_servers",
+      "wrapper_source_url": "https://docs.openhands.dev/openhands/usage/cli/mcp-servers",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenHands skill-pack candidate. The official public surface is the global skill registry; not officially listed.",
+      "distribution_surface_kind": "official_skill_registry",
+      "official_public_surface": {
+        "label": "OpenHands global skill registry",
+        "url": "https://docs.openhands.dev/overview/skills/public"
+      },
+      "distribution_candidate": "skill_registry_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "docs/integrations/prompts/openhands-starter.md",
+        "docs/integrations/recipes/openhands.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume destructive automation is safe.",
+        "Do not assume hosted multi-tenant auth exists.",
+        "Do not expose recommendation as a builder feature."
+      ],
+      "page_fragment": "#client-openhands",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-openhands"
+    },
+    {
+      "client": "opencode",
+      "display_name": "OpenCode",
+      "prompt_path": "docs/integrations/prompts/opencode-starter.md",
+      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+      "prompt_markdown": "# DealWatch Starter Prompt For OpenCode\n\nThis pack treats OpenCode as a generic local MCP/API client unless a stricter client contract is proven elsewhere.\n\n## Safe integration posture\n\n- use the shipped local MCP stdio command if OpenCode supports MCP registration\n- otherwise consume the local HTTP read surfaces from the phase-1 substrate document\n- keep the first loop read-only and compare-first\n\n## Registration fact that is actually verified here\n\n```bash\nPYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio\n```\n\nThe command above is repo-verified.\nThe current OpenCode wrapper shape is also documented in [`docs/integrations/recipes/opencode.md`](../recipes/opencode.md), so this repo now keeps both the launch record and one official local-config translation in view.\n\n## Starter prompt\n\n```text\nUse DealWatch as a local compare-first truth backend.\nStart with runtime readiness, then get_builder_starter_pack, then compare preview, then inspect watch/group/runtime/notification/store truth through read-only surfaces.\nDo not assume OpenCode has any special DealWatch plugin or write-side control path.\nIf your plan requires durable writes, operator automation, hosted auth, or SDK semantics, stop and mark those as outside the current repo-supported builder surface.\n```\n",
+      "skill_path": "docs/integrations/skills/opencode-readonly-builder-skill.md",
+      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/opencode-readonly-builder-skill.md",
+      "skill_markdown": "# DealWatch Builder Skill For OpenCode\n\nUse this skill when OpenCode is connected to DealWatch through the local MCP server or local HTTP runtime.\n\n## Goal\n\nTreat DealWatch as a local-first, compare-first, read-only product truth surface for OpenCode.\n\n## Do first\n\n1. inspect the shipped MCP or HTTP inventory\n2. inspect runtime readiness\n3. inspect the builder starter pack contract\n4. run compare preview before assuming any URL deserves durable state\n5. stay on read-only product truth unless a human explicitly opens a separate operator lane\n\n## Hard boundaries\n\n- Do not present DealWatch as a hosted SaaS.\n- Do not present DealWatch as an official OpenCode plugin.\n- Do not invent write-side MCP.\n- Do not assume hosted auth or SDK packaging exists.\n- Do not bypass compare preview and jump straight to durable state assumptions.\n",
+      "recipe_path": "docs/integrations/recipes/opencode.md",
+      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md",
+      "wrapper_example_path": "docs/integrations/examples/opencode.jsonc",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "opencode_jsonc_mcp_local_entry",
+      "wrapper_source_url": "https://opencode.ai/docs/mcp-servers/",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group detail reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenCode ecosystem candidate. The official public surface is the OpenCode ecosystem list; not officially listed.",
+      "distribution_surface_kind": "official_ecosystem_listing",
+      "official_public_surface": {
+        "label": "OpenCode ecosystem listing",
+        "url": "https://opencode.ai/docs/ecosystem/"
+      },
+      "distribution_candidate": "ecosystem_listing_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/examples/opencode.jsonc",
+        "docs/integrations/prompts/opencode-starter.md",
+        "docs/integrations/recipes/opencode.md"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md"
+      ],
+      "boundary_reminders": [
+        "Do not assume special write-side control exists.",
+        "Do not assume hosted auth exists.",
+        "Do not assume SDK semantics exist."
+      ],
+      "page_fragment": "#client-opencode",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-opencode"
+    },
+    {
+      "client": "openclaw",
+      "display_name": "OpenClaw",
+      "prompt_path": "docs/integrations/prompts/openclaw-starter.md",
+      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
+      "prompt_markdown": "# DealWatch Starter Prompt For OpenClaw\n\nUse this when OpenClaw is consuming DealWatch through local MCP or local HTTP read paths.\nThe current saved-registry translation lives in [`../recipes/openclaw.md`](../recipes/openclaw.md).\n\n## Safe integration posture\n\n- treat DealWatch as a local-first, read-only-first product truth backend\n- start with runtime readiness and builder contract discovery before compare preview\n- keep OpenClaw on observation and synthesis paths unless a human explicitly authorizes operator-owned write flows outside the current builder contract\n\n## Repo-verified local handoff\n\n```bash\nPYTHONPATH=src uv run python -m dealwatch.mcp list-tools --json\nPYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio\n```\n\nThe commands above are repo-verified.\nThe current OpenClaw-side wrapper is also documented in the recipe file linked above.\n\n## Starter prompt\n\n```text\nUse DealWatch as a local-first, read-only builder surface.\nStart by inspecting the shipped MCP tool list and the builder starter pack contract.\nThen read runtime readiness.\nThen run compare_preview before assuming any URL deserves durable state.\nAfter that, stay on read-only surfaces: watch tasks, watch groups, recovery inbox, notification settings, and the store onboarding cockpit.\nKeep the integration local-first and read-only-first.\nDo not present DealWatch as a hosted platform, official OpenClaw plugin, packaged SDK, or write-capable remote control plane.\nIf a plan requires maintenance, bootstrap-owner, provider webhook flows, or maintainer-only browser debug commands, stop and mark those as outside the current repo-supported builder surface.\n```\n",
+      "skill_path": "docs/integrations/skills/openclaw-readonly-builder-skill.md",
+      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
+      "skill_markdown": "# DealWatch Builder Skill For OpenClaw\n\nUse this skill when OpenClaw is connected to DealWatch through the local MCP server or local HTTP runtime.\n\n## Goal\n\nTreat DealWatch as a local-first, compare-first, read-only product truth surface inside OpenClaw.\n\n## Do first\n\n1. inspect the shipped MCP or HTTP inventory\n2. inspect runtime readiness\n3. inspect the builder starter pack contract\n4. run compare preview before assuming any URL deserves durable state\n5. stay on read-only product truth unless a human explicitly opens a separate operator lane\n\n## Hard boundaries\n\n- Do not present DealWatch as a hosted SaaS.\n- Do not present DealWatch as an official OpenClaw plugin.\n- Do not present DealWatch as an OpenClaw runtime base.\n- Do not invent write-side MCP.\n- Do not bypass compare preview and jump straight to durable state assumptions.\n",
+      "recipe_path": "docs/integrations/recipes/openclaw.md",
+      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md",
+      "wrapper_example_path": "docs/integrations/examples/openclaw-mcp-servers.json",
+      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openclaw-mcp-servers.json",
+      "config_wrapper_status": "official_wrapper_documented",
+      "wrapper_example_kind": "official",
+      "wrapper_surface": "mcp_servers_registry_json",
+      "wrapper_source_url": "https://docs.openclaw.ai/cli/mcp",
+      "recommended_transport": "stdio",
+      "launch_command": "PYTHONPATH=src uv run python -m dealwatch.mcp serve --transport stdio",
+      "safe_first_flow": [
+        "get_runtime_readiness",
+        "get_builder_starter_pack",
+        "compare_preview",
+        "watch or group reads",
+        "get_recovery_inbox",
+        "get_store_onboarding_cockpit"
+      ],
+      "plugin_status": "Repo-owned OpenClaw registry candidate. The official public surface is ClawHub; not officially listed.",
+      "distribution_surface_kind": "clawhub_public_registry",
+      "official_public_surface": {
+        "label": "OpenClaw ClawHub registry",
+        "url": "https://docs.openclaw.ai/tools/clawhub"
+      },
+      "distribution_candidate": "registry_candidate",
+      "listing_status": "not_officially_listed",
+      "repo_distribution_artifacts": [
+        "docs/integrations/prompts/openclaw-starter.md",
+        "docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "docs/integrations/recipes/openclaw.md",
+        "plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "plugins/dealwatch-builder-pack/.codex-plugin/plugin.json"
+      ],
+      "repo_distribution_artifact_urls": [
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.claude-plugin/plugin.json",
+        "https://github.com/xiaojiou176/dealwatch/blob/main/plugins/dealwatch-builder-pack/.codex-plugin/plugin.json"
+      ],
+      "boundary_reminders": [
+        "Do not treat DealWatch as an OpenClaw runtime base.",
+        "Do not assume write-side MCP or operator automation is ready.",
+        "Do not treat local-first proof surfaces as hosted control plane guarantees."
+      ],
+      "page_fragment": "#client-openclaw",
+      "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html#client-openclaw"
+    }
+  ]
+}

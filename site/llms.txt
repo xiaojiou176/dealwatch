@@ -1,0 +1,81 @@
+# DealWatch
+
+> AI-enhanced, compare-first grocery price intelligence with compare preview, compare-aware watch groups, effective price, recovery guidance, and safe read-only MCP access.
+
+## Primary entrypoints
+
+- Home: https://xiaojiou176.github.io/dealwatch/
+- Compare Preview: https://xiaojiou176.github.io/dealwatch/compare-preview.html
+- Quick Start: https://xiaojiou176.github.io/dealwatch/quick-start.html
+- Builders: https://xiaojiou176.github.io/dealwatch/builders.html
+- Comparison: https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html
+- Proof: https://xiaojiou176.github.io/dealwatch/proof.html
+- Community: https://xiaojiou176.github.io/dealwatch/community.html
+- FAQ: https://xiaojiou176.github.io/dealwatch/faq.html
+- Feed: https://xiaojiou176.github.io/dealwatch/feed.xml
+
+## Builder entrypoints
+
+- Human path: builder pack -> phase-1 contract -> local runtime exports -> compare preview
+- Machine path mirror: builders page -> static client catalog index -> static client starters mirror -> static starter pack mirror -> static all-clients bundle mirror -> phase-1 contract -> local runtime export surfaces -> compare preview
+- Static builder client catalog: https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json
+- Static client starters mirror: https://xiaojiou176.github.io/dealwatch/data/builder-client-starters.json
+- Static builder starter pack mirror: https://xiaojiou176.github.io/dealwatch/data/builder-starter-pack.json
+- Static all-clients config mirror: https://xiaojiou176.github.io/dealwatch/data/builder-client-configs.json
+- Repo-owned builder frontdoor: https://xiaojiou176.github.io/dealwatch/builders.html
+- Native bundle candidates for the plugin platforms that already support them: https://github.com/xiaojiou176/dealwatch/tree/main/plugins/dealwatch-builder-pack
+- Claude Code repo marketplace: https://github.com/xiaojiou176/dealwatch/blob/main/.claude-plugin/marketplace.json
+- Codex repo marketplace: https://github.com/xiaojiou176/dealwatch/blob/main/.agents/plugins/marketplace.json
+- Listing-prep distribution assets: https://xiaojiou176.github.io/dealwatch/assets/social/social-preview-1280x640.png , https://xiaojiou176.github.io/dealwatch/proof.html , https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json
+- SEO crawl surfaces for the same frontdoor: https://xiaojiou176.github.io/dealwatch/llms.txt , https://xiaojiou176.github.io/dealwatch/sitemap.xml , https://xiaojiou176.github.io/dealwatch/feed.xml
+- API / MCP substrate contract: https://github.com/xiaojiou176/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md
+- Builder starter pack: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations
+- Client config recipes: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md
+- CLI client config export: `python -m dealwatch builder-client-config <client> --json`
+- CLI client config bundle: `python -m dealwatch builder-client-config --all --json`
+- HTTP client config export: `GET /api/runtime/builder-client-config/{client}`
+- HTTP client config bundle: `GET /api/runtime/builder-client-configs`
+- MCP client config export: `get_builder_client_config`
+- MCP client config bundle: `list_builder_client_configs`
+- Local runtime tool inventory: `python -m dealwatch.mcp list-tools --json`
+- Client starters snapshot: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/mcp-client-starters.response.json
+- HTTP builder starter pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/http-builder-starter-pack.response.json
+- Prompt starters: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompt-starters.md
+- Per-client prompts: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/prompts
+- Per-client recipes: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/recipes
+- Wrapper examples: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/examples
+- Builder skill pack: https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations/skills
+- Product-safe first action after wiring: https://xiaojiou176.github.io/dealwatch/compare-preview.html
+- Official distribution reality by client: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md#official-distribution-reality-by-client
+
+## Product shape
+
+- Compare multiple grocery product URLs before creating a watch task or compare-aware watch group.
+- Keep compare candidates alive inside a watch group so the best current option can change over time.
+- Use optional AI-assisted explanations to explain compare evidence, watch-group decisions, and recovery guidance without replacing deterministic product truth.
+- Track listed price together with cashback-adjusted effective price and runtime health signals.
+- Review task runs, group runs, price history, and delivery events from one UI.
+- Expose compare, watch, runtime, notification, and store cockpit truth through a thin read-only MCP server.
+- Print repo-owned client starter metadata through `python -m dealwatch.mcp client-starters --json`.
+- Read the repo-owned builder contract through `GET /api/runtime/builder-starter-pack` or `get_builder_starter_pack`.
+- Read one exact per-client recipe export through `python -m dealwatch builder-client-config <client> --json`, `GET /api/runtime/builder-client-config/{client}`, or `get_builder_client_config`.
+- Read the full all-clients recipe bundle through `python -m dealwatch builder-client-config --all --json`, `GET /api/runtime/builder-client-configs`, or `list_builder_client_configs`.
+- Keep AI positioning narrow: AI-assisted compare explanations, watch-group explanations, and recovery guidance are live today.
+- Local-first runtime with FastAPI API, APScheduler worker, Preact WebUI, and PostgreSQL.
+
+## Boundaries
+
+- Not a hosted SaaS.
+- Not a generic chat bot or autonomous agent.
+- Not a shipped buy / wait recommendation engine today.
+- Not a hosted plugin runtime or a published marketplace listing today. The repo does ship repo-owned builder-pack materials, native bundle candidates where supported, and listing-prep distribution assets that still point back to the same local-first contract.
+
+## Trust surfaces
+
+- Latest release: https://github.com/xiaojiou176/dealwatch/releases/latest
+- Releases: https://github.com/xiaojiou176/dealwatch/releases
+- Discussions: https://github.com/xiaojiou176/dealwatch/discussions
+- Builder Starter Pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md
+- Builder Skill Pack: https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/README.md
+- Start here: https://github.com/xiaojiou176/dealwatch#start-here
+- Roadmap: https://github.com/xiaojiou176/dealwatch#roadmap

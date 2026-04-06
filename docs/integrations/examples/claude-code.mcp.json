@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "dealwatch": {
+      "command": "uv",
+      "args": ["run", "python", "-m", "dealwatch.mcp", "serve", "--transport", "stdio"],
+      "env": {
+        "PYTHONPATH": "src"
+      }
+    }
+  }
+}

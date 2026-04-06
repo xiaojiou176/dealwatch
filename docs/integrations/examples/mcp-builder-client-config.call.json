@@ -1,0 +1,6 @@
+{
+  "arguments": {
+    "client": "codex"
+  },
+  "tool": "get_builder_client_config"
+}
