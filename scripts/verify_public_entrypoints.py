@@ -16,26 +16,26 @@ SITE_LLMS = ROOT / "site" / "llms.txt"
 REQUIRED_SNIPPETS = {
     README: [
         "## Start Here",
-        "https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo",
-        "https://xiaojiou176.github.io/dealwatch/quick-start.html",
-        "https://xiaojiou176.github.io/dealwatch/builders.html",
-        "https://xiaojiou176.github.io/dealwatch/compare-preview.html",
-        "https://xiaojiou176.github.io/dealwatch/proof.html",
+        "https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo",
+        "https://xiaojiou176-open.github.io/dealwatch/quick-start.html",
+        "https://xiaojiou176-open.github.io/dealwatch/builders.html",
+        "https://xiaojiou176-open.github.io/dealwatch/compare-preview.html",
+        "https://xiaojiou176-open.github.io/dealwatch/proof.html",
         "./site/builders.html",
         "./site/llms.txt",
         "./site/data/builder-client-catalog.json",
         "./site/data/builder-client-starters.json",
         "./site/data/builder-starter-pack.json",
         "./site/data/builder-client-configs.json",
-        "https://github.com/xiaojiou176/dealwatch/releases/latest",
+        "https://github.com/xiaojiou176-open/dealwatch/releases/latest",
     ],
     SITE_INDEX: [
         "./compare-preview.html#sample-compare-demo",
         "./quick-start.html",
         "./builders.html",
         "./proof.html",
-        "https://github.com/xiaojiou176/dealwatch/releases/latest",
-        "https://github.com/xiaojiou176/dealwatch/discussions",
+        "https://github.com/xiaojiou176-open/dealwatch/releases/latest",
+        "https://github.com/xiaojiou176-open/dealwatch/discussions",
     ],
     SITE_PROOF: [
         "python3 scripts/verify_docs_contract.py",
@@ -43,39 +43,39 @@ REQUIRED_SNIPPETS = {
         "python3 scripts/verify_site_surface.py",
         "python3 scripts/verify_remote_github_state.py",
         "python3 scripts/print_remote_repo_settings_checklist.py",
-        "https://github.com/xiaojiou176/dealwatch/releases/latest",
+        "https://github.com/xiaojiou176-open/dealwatch/releases/latest",
     ],
     SITE_BUILDERS: [
-        "https://github.com/xiaojiou176/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md",
+        "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/roadmaps/dealwatch-api-mcp-substrate-phase1.md",
         "./data/builder-client-catalog.json",
         "./data/builder-client-starters.json",
         "./data/builder-starter-pack.json",
         "./data/builder-client-configs.json",
-        "https://github.com/xiaojiou176/dealwatch/tree/main/docs/integrations",
+        "https://github.com/xiaojiou176-open/dealwatch/tree/main/docs/integrations",
     ],
     SITE_COMMUNITY: [
-        "https://github.com/xiaojiou176/dealwatch#start-here",
-        "https://github.com/xiaojiou176/dealwatch#roadmap",
+        "https://github.com/xiaojiou176-open/dealwatch#start-here",
+        "https://github.com/xiaojiou176-open/dealwatch#roadmap",
     ],
     SITE_LLMS: [
-        "https://xiaojiou176.github.io/dealwatch/builders.html",
-        "https://xiaojiou176.github.io/dealwatch/data/builder-client-catalog.json",
-        "https://xiaojiou176.github.io/dealwatch/data/builder-client-starters.json",
-        "https://xiaojiou176.github.io/dealwatch/data/builder-starter-pack.json",
-        "https://xiaojiou176.github.io/dealwatch/data/builder-client-configs.json",
-        "https://github.com/xiaojiou176/dealwatch/releases/latest",
-        "https://github.com/xiaojiou176/dealwatch#start-here",
-        "https://github.com/xiaojiou176/dealwatch#roadmap",
+        "https://xiaojiou176-open.github.io/dealwatch/builders.html",
+        "https://xiaojiou176-open.github.io/dealwatch/data/builder-client-catalog.json",
+        "https://xiaojiou176-open.github.io/dealwatch/data/builder-client-starters.json",
+        "https://xiaojiou176-open.github.io/dealwatch/data/builder-starter-pack.json",
+        "https://xiaojiou176-open.github.io/dealwatch/data/builder-client-configs.json",
+        "https://github.com/xiaojiou176-open/dealwatch/releases/latest",
+        "https://github.com/xiaojiou176-open/dealwatch#start-here",
+        "https://github.com/xiaojiou176-open/dealwatch#roadmap",
     ],
     SITE_FEED: [
-        "https://github.com/xiaojiou176/dealwatch/releases/latest",
-        "https://github.com/xiaojiou176/dealwatch/releases",
-        "https://github.com/xiaojiou176/dealwatch/blob/main/CHANGELOG.md",
+        "https://github.com/xiaojiou176-open/dealwatch/releases/latest",
+        "https://github.com/xiaojiou176-open/dealwatch/releases",
+        "https://github.com/xiaojiou176-open/dealwatch/blob/main/CHANGELOG.md",
     ],
 }
 
 FORBIDDEN_RELEASE_TAG_PATTERNS = (
-    "https://github.com/xiaojiou176/dealwatch/releases/tag/v",
+    "https://github.com/xiaojiou176-open/dealwatch/releases/tag/v",
     "/releases/tag/v",
 )
 
@@ -83,9 +83,9 @@ FORBIDDEN_RELEASE_TAG_PATTERNS = (
 def _assert_readme_start_here_order(text: str, findings: list[str]) -> None:
     try:
         start_here = text.index("## Start Here")
-        compare_preview = text.index("https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo", start_here)
-        quick_start = text.index("https://xiaojiou176.github.io/dealwatch/quick-start.html", start_here)
-        builders = text.index("https://xiaojiou176.github.io/dealwatch/builders.html", start_here)
+        compare_preview = text.index("https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo", start_here)
+        quick_start = text.index("https://xiaojiou176-open.github.io/dealwatch/quick-start.html", start_here)
+        builders = text.index("https://xiaojiou176-open.github.io/dealwatch/builders.html", start_here)
     except ValueError as exc:
         findings.append(f"README.md missing ordered Start Here route evidence: {exc}")
         return

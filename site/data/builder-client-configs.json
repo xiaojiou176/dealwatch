@@ -59,10 +59,10 @@
         "skills": "docs/integrations/skills/README.md"
       },
       "warning": "This per-client export describes a repo-owned distribution candidate. It does not prove an official listing, hosted control plane, or write-capable MCP surface.",
-      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/claude-code-starter.md",
-      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/claude-code-readonly-builder-skill.md",
-      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/claude-code.md",
-      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/claude-code.mcp.json"
+      "prompt_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompts/claude-code-starter.md",
+      "skill_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/claude-code-readonly-builder-skill.md",
+      "recipe_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/recipes/claude-code.md",
+      "wrapper_example_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/claude-code.mcp.json"
     },
     {
       "client": "codex",
@@ -121,10 +121,10 @@
       },
       "warning": "This per-client export describes a repo-owned distribution candidate. It does not prove an official listing, hosted control plane, or write-capable MCP surface.",
       "runtime_endpoint": "http://127.0.0.1:8000/mcp",
-      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/codex-starter.md",
-      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/codex-readonly-builder-skill.md",
-      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/codex.md",
-      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/codex-mcp-config.toml"
+      "prompt_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompts/codex-starter.md",
+      "skill_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/codex-readonly-builder-skill.md",
+      "recipe_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/recipes/codex.md",
+      "wrapper_example_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/codex-mcp-config.toml"
     },
     {
       "client": "openhands",
@@ -181,10 +181,10 @@
         "skills": "docs/integrations/skills/README.md"
       },
       "warning": "This per-client export describes a repo-owned distribution candidate. It does not prove an official listing, hosted control plane, or write-capable MCP surface.",
-      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
-      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
-      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openhands.md",
-      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openhands-config.toml"
+      "prompt_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompts/openhands-starter.md",
+      "skill_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/openhands-readonly-builder-skill.md",
+      "recipe_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/recipes/openhands.md",
+      "wrapper_example_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/openhands-config.toml"
     },
     {
       "client": "opencode",
@@ -241,10 +241,10 @@
         "skills": "docs/integrations/skills/README.md"
       },
       "warning": "This per-client export describes a repo-owned distribution candidate. It does not prove an official listing, hosted control plane, or write-capable MCP surface.",
-      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
-      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/opencode-readonly-builder-skill.md",
-      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/opencode.md",
-      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc"
+      "prompt_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompts/opencode-starter.md",
+      "skill_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/opencode-readonly-builder-skill.md",
+      "recipe_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/recipes/opencode.md",
+      "wrapper_example_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/opencode.jsonc"
     },
     {
       "client": "openclaw",
@@ -303,10 +303,10 @@
         "skills": "docs/integrations/skills/README.md"
       },
       "warning": "This per-client export describes a repo-owned distribution candidate. It does not prove an official listing, hosted control plane, or write-capable MCP surface.",
-      "prompt_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
-      "skill_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
-      "recipe_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/recipes/openclaw.md",
-      "wrapper_example_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/openclaw-mcp-servers.json"
+      "prompt_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompts/openclaw-starter.md",
+      "skill_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/openclaw-readonly-builder-skill.md",
+      "recipe_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/recipes/openclaw.md",
+      "wrapper_example_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/openclaw-mcp-servers.json"
     }
   ],
   "client_ids": [
@@ -323,13 +323,13 @@
   },
   "warning": "This static client-config bundle mirrors repo-owned builder client exports and distribution-candidate metadata for the public proof surface. It does not prove a hosted runtime, official listing, or write-capable MCP surface.",
   "docs_urls": {
-    "builder_pack_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md",
-    "config_recipes_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/config-recipes.md",
-    "examples_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/examples/README.md",
-    "prompt_starters_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/prompt-starters.md",
-    "skills_url": "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/skills/README.md"
+    "builder_pack_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/README.md",
+    "config_recipes_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/config-recipes.md",
+    "examples_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/examples/README.md",
+    "prompt_starters_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/prompt-starters.md",
+    "skills_url": "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/skills/README.md"
   },
   "static_surface": "github_pages_proof",
-  "page_url": "https://xiaojiou176.github.io/dealwatch/builders.html",
-  "mirror_url": "https://xiaojiou176.github.io/dealwatch/data/builder-client-configs.json"
+  "page_url": "https://xiaojiou176-open.github.io/dealwatch/builders.html",
+  "mirror_url": "https://xiaojiou176-open.github.io/dealwatch/data/builder-client-configs.json"
 }

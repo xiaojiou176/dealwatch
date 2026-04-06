@@ -869,13 +869,13 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "DealWatch vs. 普通价格追踪器 | 先 Compare，再进入跟踪",
-        "url": "https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html",
         "description": "看看 DealWatch 如何从 Compare Preview、compare-aware watch groups、AI 辅助解释，以及面向 Codex、Claude Code、OpenHands、OpenCode、OpenClaw 的带 proof 只读表面出发，与普通价格追踪器拉开差距。",
         "keywords": "DealWatch, 普通价格追踪器, compare-first, Compare Preview, compare-aware watch groups, 只读 proof surface, Claude Code, Codex, OpenHands, OpenCode, OpenClaw",
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         },
         "about": [
           "compare-first 杂货价格情报",
@@ -922,9 +922,9 @@
         "name": "DealWatch",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, macOS, Linux, Windows",
-        "url": "https://xiaojiou176.github.io/dealwatch/",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/",
         "description": "以 compare-first 为核心的价格情报产品，提供三个第一跳路径：样例 Compare Preview、本地 Quick Start，以及只读 Builders。",
-        "softwareHelp": "https://xiaojiou176.github.io/dealwatch/faq.html",
+        "softwareHelp": "https://xiaojiou176-open.github.io/dealwatch/faq.html",
         "keywords": "DealWatch, Compare Preview, Quick Start, Builders, compare-first 价格情报",
         "featureList": [
           "以 compare-first 为核心的商品 URL 验证",
@@ -1036,13 +1036,13 @@
       "@context": "https://schema.org",
       "@type": "WebPage",
         "name": "DealWatch Compare Preview | 先 Compare，再进入跟踪",
-        "url": "https://xiaojiou176.github.io/dealwatch/compare-preview.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/compare-preview.html",
         "description": "打开一个只读样例 Compare Preview，然后按你的目标选择 Quick Start、Proof 或 Builders：分别对应本地运行栈、验证链路和只读 agent 接线。",
         "keywords": "DealWatch Compare Preview, compare-first, 只读样例, Quick Start, Proof, Builders",
       "isPartOf": {
         "@type": "WebSite",
         "name": "DealWatch",
-        "url": "https://xiaojiou176.github.io/dealwatch/"
+        "url": "https://xiaojiou176-open.github.io/dealwatch/"
       },
         "about": [
           "以 compare-first 为核心的商品 URL 验证",
@@ -1174,7 +1174,7 @@
         "@type": "TechArticle",
         "headline": "DealWatch Proof | AI 解释、恢复指引与只读 MCP 证据",
         "name": "DealWatch Proof | AI 解释、恢复指引与只读 MCP 证据",
-        "url": "https://xiaojiou176.github.io/dealwatch/proof.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/proof.html",
         "description": "查看 DealWatch 的 AI 辅助 compare 解释、面向 Claude Code、Codex、OpenHands、OpenCode 的只读 MCP/API 访问、运行命令与 recommendation 边界背后的证据。",
         "keywords": "DealWatch proof, 只读 MCP, Claude Code, Codex, OpenHands, OpenCode, AI 辅助解释, compare-first",
         "about": [
@@ -1186,7 +1186,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       },
       "statusAdapterTitle": "Live adapter 证据",
@@ -1551,7 +1551,7 @@
         "@type": "TechArticle",
         "headline": "DealWatch Builders | 只读 Builder 前门与 Runtime 路线",
         "name": "DealWatch Builders",
-        "url": "https://xiaojiou176.github.io/dealwatch/builders.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/builders.html",
         "description": "通过一条诚实路线来理解 DealWatch 这个 local-first 的只读决策后端：先走 human path，再走 machine path，最后才进入本地 runtime export 表面。",
         "keywords": "DealWatch builders, read-only builder frontdoor, llms.txt, sitemap.xml, builder starter pack JSON, Codex MCP, Claude Code MCP, OpenHands MCP, OpenCode MCP, OpenClaw MCP",
         "about": [
@@ -1566,7 +1566,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1637,7 +1637,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "DealWatch Use Cases",
-        "url": "https://xiaojiou176.github.io/dealwatch/use-cases.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/use-cases.html",
         "description": "查看 compare-first 生鲜比较、compare-aware watch groups、返现感知跟踪、AI 辅助解释与运维恢复的使用场景。",
         "about": [
           "跨门店生鲜比较",
@@ -1649,7 +1649,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1771,7 +1771,7 @@
         "@context": "https://schema.org",
         "@type": "CollectionPage",
         "name": "DealWatch Community",
-        "url": "https://xiaojiou176.github.io/dealwatch/community.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/community.html",
         "description": "DealWatch 的公开入口：讨论、路线图问题、门店请求、发布更新与支持流程。",
         "about": [
           "GitHub Discussions",
@@ -1782,7 +1782,7 @@
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     },
@@ -1802,12 +1802,12 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "DealWatch | 页面不存在",
-        "url": "https://xiaojiou176.github.io/dealwatch/404.html",
+        "url": "https://xiaojiou176-open.github.io/dealwatch/404.html",
         "description": "你要找的页面不存在。请改去 DealWatch 首页、Quick Start 或 FAQ。",
         "isPartOf": {
           "@type": "WebSite",
           "name": "DealWatch",
-          "url": "https://xiaojiou176.github.io/dealwatch/"
+          "url": "https://xiaojiou176-open.github.io/dealwatch/"
         }
       }
     }

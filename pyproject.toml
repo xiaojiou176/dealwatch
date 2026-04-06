@@ -50,12 +50,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://xiaojiou176.github.io/dealwatch/"
-Repository = "https://github.com/xiaojiou176/dealwatch"
-Documentation = "https://github.com/xiaojiou176/dealwatch/blob/main/docs/integrations/README.md"
-Issues = "https://github.com/xiaojiou176/dealwatch/issues"
-Discussions = "https://github.com/xiaojiou176/dealwatch/discussions"
-Changelog = "https://github.com/xiaojiou176/dealwatch/releases"
+Homepage = "https://xiaojiou176-open.github.io/dealwatch/"
+Repository = "https://github.com/xiaojiou176-open/dealwatch"
+Documentation = "https://github.com/xiaojiou176-open/dealwatch/blob/main/docs/integrations/README.md"
+Issues = "https://github.com/xiaojiou176-open/dealwatch/issues"
+Discussions = "https://github.com/xiaojiou176-open/dealwatch/discussions"
+Changelog = "https://github.com/xiaojiou176-open/dealwatch/releases"
 
 [project.scripts]
 dealwatch = "dealwatch.cli:main"

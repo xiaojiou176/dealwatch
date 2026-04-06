@@ -13,7 +13,7 @@ Use this file when you need the exact split between:
 
 ## One-Line Summary
 
-> The old local mainline was preserved into a private archive, a new clean public canonical repo took over `xiaojiou176/dealwatch`, the public release surface was reduced to a single reissued `v0.1.2`, and the remaining blockers are now external Render `404` plus GitHub UI-only social preview confirmation.
+> The old local mainline was captured during hard-cut truth anchoring, a new clean public canonical repo took over `xiaojiou176-open/dealwatch`, the public release surface was reduced to a single reissued `v0.1.2`, the temporary local rollback assets were deleted after verification, and the remaining blockers are now external Render `404`, an inactive GitHub social preview custom image, and the unresolved PyPI package question.
 
 ## Archive / Context Says
 
@@ -24,7 +24,7 @@ The old canonical repo had:
 - multiple review/process-noise commits such as `sign off` / `review-fix`
 - stale closeout docs and stale public-entry narratives
 
-That history is preserved for rollback and forensic reference, but it is no longer the public canonical history.
+Those facts were recorded during the hard-cut truth-anchor phase. The temporary local rollback assets have since been deleted, so this dated overlay is now the repo-owned audit record of the pre-cutover history shape.
 
 ## Repo-Local Says
 
@@ -47,9 +47,9 @@ Current Git/GitHub truth after cutover:
 
 | Field | Value |
 | --- | --- |
-| canonical repo | `xiaojiou176/dealwatch` |
-| archive repo | `xiaojiou176/dealwatch-archive-20260406` |
-| archive visibility | private |
+| canonical repo | `xiaojiou176-open/dealwatch` |
+| archive repo | deleted after verification |
+| archive visibility | n/a |
 | remote heads on canonical repo | `main` only |
 | open PRs | `0` |
 | open issues | `0` |
@@ -76,10 +76,10 @@ The rebuilt canonical repo has:
 
 Fresh public probes after cutover say:
 
-- `https://github.com/xiaojiou176/dealwatch` is reachable
-- `https://xiaojiou176.github.io/dealwatch/` is reachable
-- `https://xiaojiou176.github.io/dealwatch/proof.html` is reachable
-- `https://xiaojiou176.github.io/dealwatch/faq.html` is reachable
+- `https://github.com/xiaojiou176-open/dealwatch` is reachable
+- `https://xiaojiou176-open.github.io/dealwatch/` is reachable
+- `https://xiaojiou176-open.github.io/dealwatch/proof.html` is reachable
+- `https://xiaojiou176-open.github.io/dealwatch/faq.html` is reachable
 - `https://dealwatch-api.onrender.com/api/health` still returns `404`
 - `https://dealwatch-webui.onrender.com/` still returns `404`
 
@@ -88,6 +88,6 @@ Fresh public probes after cutover say:
 | Ledger | Current call |
 | --- | --- |
 | repo-side engineering | clean after hard-cut |
-| delivery landed | clean once new canonical repo is pushed and verified |
-| git closure | clean once archive/private + new canonical + branch protection + zero open PRs all hold |
-| external blocker | Render `404` and social preview UI-only confirmation |
+| delivery landed | clean on the current public canonical repo |
+| git closure | clean on Git/GitHub surfaces; only `main` remains and the archive repo is gone |
+| external blocker | Render `404`, inactive social preview custom image, and the PyPI package ownership/removal path |

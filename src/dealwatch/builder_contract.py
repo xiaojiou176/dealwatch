@@ -5,9 +5,9 @@ from pathlib import Path
 from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-PUBLIC_SITE_ROOT = "https://xiaojiou176.github.io/dealwatch"
-PUBLIC_GITHUB_BLOB_ROOT = "https://github.com/xiaojiou176/dealwatch/blob/main"
-PUBLIC_GITHUB_TREE_ROOT = "https://github.com/xiaojiou176/dealwatch/tree/main"
+PUBLIC_SITE_ROOT = "https://xiaojiou176-open.github.io/dealwatch"
+PUBLIC_GITHUB_BLOB_ROOT = "https://github.com/xiaojiou176-open/dealwatch/blob/main"
+PUBLIC_GITHUB_TREE_ROOT = "https://github.com/xiaojiou176-open/dealwatch/tree/main"
 
 _CLIENT_STARTER_SPECS: list[dict[str, Any]] = [
     {

@@ -1,10 +1,10 @@
 # DealWatch
-<!-- mcp-name: io.github.xiaojiou176/dealwatch -->
+<!-- mcp-name: io.github.xiaojiou176-open/dealwatch -->
 
-[![CI](https://github.com/xiaojiou176/dealwatch/actions/workflows/ci.yml/badge.svg)](https://github.com/xiaojiou176/dealwatch/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/xiaojiou176/dealwatch/actions/workflows/codeql.yml/badge.svg)](https://github.com/xiaojiou176/dealwatch/actions/workflows/codeql.yml)
+[![CI](https://github.com/xiaojiou176-open/dealwatch/actions/workflows/ci.yml/badge.svg)](https://github.com/xiaojiou176-open/dealwatch/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/xiaojiou176-open/dealwatch/actions/workflows/codeql.yml/badge.svg)](https://github.com/xiaojiou176-open/dealwatch/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-14213d.svg)](./LICENSE)
-[![Release](https://img.shields.io/github/v/release/xiaojiou176/dealwatch?display_name=tag)](https://github.com/xiaojiou176/dealwatch/releases)
+[![Release](https://img.shields.io/github/v/release/xiaojiou176-open/dealwatch?display_name=tag)](https://github.com/xiaojiou176-open/dealwatch/releases)
 
 **Compare first. Understand the grocery price decision faster.**
 
@@ -12,7 +12,7 @@ DealWatch is an AI-enhanced, compare-first grocery price intelligence product. I
 
 The AI layer is real, but intentionally narrow: DealWatch uses AI-assisted explanations for compare decisions, watch-group decisions, and recovery guidance while keeping deterministic product truth in charge. It is not a hosted SaaS, a generic chat bot, or an autonomous buying agent.
 
-[Start Here](#start-here) · [Compare Preview](https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo) · [Quick Start](https://xiaojiou176.github.io/dealwatch/quick-start.html) · [Builders](https://xiaojiou176.github.io/dealwatch/builders.html) · [Proof](https://xiaojiou176.github.io/dealwatch/proof.html) · [Releases](https://github.com/xiaojiou176/dealwatch/releases/latest)
+[Start Here](#start-here) · [Compare Preview](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo) · [Quick Start](https://xiaojiou176-open.github.io/dealwatch/quick-start.html) · [Builders](https://xiaojiou176-open.github.io/dealwatch/builders.html) · [Proof](https://xiaojiou176-open.github.io/dealwatch/proof.html) · [Releases](https://github.com/xiaojiou176-open/dealwatch/releases/latest)
 
 ![DealWatch control cabin brand bridge showing compare preview, artifact evidence, and notification surfaces](./assets/social/social-preview-1280x640.png)
 
@@ -24,14 +24,14 @@ The first public screen below is the actual Compare Preview evidence surface, us
 
 Choose the first door that matches your real goal:
 
-- [`Compare Preview`](https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo): start here when you want the fastest truthful product tour before you install anything.
-- [`Quick Start`](https://xiaojiou176.github.io/dealwatch/quick-start.html): use this path when you want to run the local runtime for your own grocery URLs.
-- [`Builders`](https://xiaojiou176.github.io/dealwatch/builders.html): use this path when you want the honest read-only MCP/API path first for Codex, Claude Code, OpenHands, OpenCode, OpenClaw, and similar builder clients, with repo-owned distribution assets available after the route is clear.
+- [`Compare Preview`](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo): start here when you want the fastest truthful product tour before you install anything.
+- [`Quick Start`](https://xiaojiou176-open.github.io/dealwatch/quick-start.html): use this path when you want to run the local runtime for your own grocery URLs.
+- [`Builders`](https://xiaojiou176-open.github.io/dealwatch/builders.html): use this path when you want the honest read-only MCP/API path first for Codex, Claude Code, OpenHands, OpenCode, OpenClaw, and similar builder clients, with repo-owned distribution assets available after the route is clear.
 
 If you need the next most useful follow-up after that first door:
 
-- [`Proof`](https://xiaojiou176.github.io/dealwatch/proof.html): open this when you want the claim-to-evidence map behind the public story.
-- [`Comparison`](https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html): open this when you want the shortest "why this is not a generic price tool" answer.
+- [`Proof`](https://xiaojiou176-open.github.io/dealwatch/proof.html): open this when you want the claim-to-evidence map behind the public story.
+- [`Comparison`](https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html): open this when you want the shortest "why this is not a generic price tool" answer.
 
 ## Public Entry Points
 
@@ -185,20 +185,20 @@ DealWatch exists to collapse that loop into one product flow: compare first, the
 
 Choose the door that matches your real goal before you start typing commands:
 
-- If you only want the first truthful product tour, stay on [`Compare Preview`](https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo).
+- If you only want the first truthful product tour, stay on [`Compare Preview`](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo).
 - If you want the local runtime for your own grocery URLs, use this Quick Start path.
-- If you are wiring a read-only builder client, jump back to [`Builders`](https://xiaojiou176.github.io/dealwatch/builders.html).
+- If you are wiring a read-only builder client, jump back to [`Builders`](https://xiaojiou176-open.github.io/dealwatch/builders.html).
 
 ### 1. Try the sample compare preview before you install anything
 
-- [`Sample compare preview`](https://xiaojiou176.github.io/dealwatch/compare-preview.html#sample-compare-demo): load a fixed public fixture, inspect match reasons, and keep the whole experience read-only.
+- [`Sample compare preview`](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html#sample-compare-demo): load a fixed public fixture, inspect match reasons, and keep the whole experience read-only.
 - The sample compare preview is static on purpose. It saves no data and does not pretend to be a hosted SaaS.
 
 ### 2. Move into local runtime only after the sample makes sense
 
-- [`Not a generic price tool`](https://xiaojiou176.github.io/dealwatch/compare-vs-tracker.html)
-- [`Compare Preview`](https://xiaojiou176.github.io/dealwatch/compare-preview.html)
-- [`Proof`](https://xiaojiou176.github.io/dealwatch/proof.html)
+- [`Not a generic price tool`](https://xiaojiou176-open.github.io/dealwatch/compare-vs-tracker.html)
+- [`Compare Preview`](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html)
+- [`Proof`](https://xiaojiou176-open.github.io/dealwatch/proof.html)
 
 ### 3. Run the fastest local stack when you want to compare your own URLs
 
@@ -522,7 +522,7 @@ If you want repo-native builder examples instead of only command references, con
 ## Proof, Not Claims
 
 - **Compare-first intake**
-  [`POST /api/compare/preview`](https://xiaojiou176.github.io/dealwatch/proof.html) is the real first product step behind the public story.
+  [`POST /api/compare/preview`](https://xiaojiou176-open.github.io/dealwatch/proof.html) is the real first product step behind the public story.
 - **One product loop, not disconnected demos**
   Compare Preview, watch task creation, task detail, and notification settings still point to one product story instead of four separate screenshots.
 - **Runtime and release truth have authority surfaces**
@@ -538,9 +538,9 @@ If you want repo-native builder examples instead of only command references, con
 
 Deep proof lives in:
 
-- [`Proof`](https://xiaojiou176.github.io/dealwatch/proof.html)
-- [`Compare Preview`](https://xiaojiou176.github.io/dealwatch/compare-preview.html)
-- [`Releases`](https://github.com/xiaojiou176/dealwatch/releases)
+- [`Proof`](https://xiaojiou176-open.github.io/dealwatch/proof.html)
+- [`Compare Preview`](https://xiaojiou176-open.github.io/dealwatch/compare-preview.html)
+- [`Releases`](https://github.com/xiaojiou176-open/dealwatch/releases)
 
 | Compare Preview | Task Detail | Notifications |
 | --- | --- | --- |
@@ -551,7 +551,7 @@ The current product runtime now also supports **compare-aware watch groups**, **
 
 ## Release Notes
 
-Read the newest public release notes at [Latest Release](https://github.com/xiaojiou176/dealwatch/releases/latest), and use [Releases](https://github.com/xiaojiou176/dealwatch/releases) when you want the full history.
+Read the newest public release notes at [Latest Release](https://github.com/xiaojiou176-open/dealwatch/releases/latest), and use [Releases](https://github.com/xiaojiou176-open/dealwatch/releases) when you want the full history.
 
 If you want a lightweight reason to keep DealWatch on hand, leave a Star now so the next release, proof update, or sample compare improvement is easy to find again.
 
@@ -578,7 +578,7 @@ If you want a lightweight reason to keep DealWatch on hand, leave a Star now so 
 - **GitHub Pages is the current public surface**
   The current public read path is `local-first + GitHub Pages`. `render.yaml` remains an optional deployment blueprint, not a guaranteed live runtime promise.
 - **Current GitHub public entry**
-  DealWatch is published from the current GitHub public entry: `https://github.com/xiaojiou176/dealwatch`
+  DealWatch is published from the current GitHub public entry: `https://github.com/xiaojiou176-open/dealwatch`
 - **Secret scanning is enforced in CI**
   Secret scanning is enforced in CI, and local scans remain recommended developer-side protection.
 - **Maintainer verification shortcuts**
