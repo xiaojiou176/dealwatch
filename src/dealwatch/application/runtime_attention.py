@@ -14,7 +14,6 @@ from dealwatch.persistence.models import (
     EffectivePriceSnapshot,
     PriceObservation,
     TaskRun,
-    User,
     WatchGroup,
     WatchGroupMember,
     WatchGroupRun,

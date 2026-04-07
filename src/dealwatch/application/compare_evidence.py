@@ -336,7 +336,6 @@ def build_compare_recommendation_shadow_payload(
     reason_code = str(recommended_next_step_hint.get("reason_code") or "compare_shadow_unknown")
     action = str(recommended_next_step_hint.get("action") or "review_before_save")
 
-    verdict = "recheck_later"
     basis = [
         str(
             recommended_next_step_hint.get("summary")
