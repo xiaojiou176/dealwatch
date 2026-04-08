@@ -65,6 +65,10 @@ Most visitors should follow this order:
   Follow the stable GitHub releases surface for the newest notes instead of relying on hand-copied version text inside docs pages.
 - **Decision Memo**
   Use [`docs/roadmaps/dealwatch-decision-memo.md`](./docs/roadmaps/dealwatch-decision-memo.md) when you need the post-archive strategic SSOT before turning copy, roadmap, or implementation questions back into open debate.
+- **Distribution**
+  Use [`DISTRIBUTION.md`](./DISTRIBUTION.md) when you want the shortest truthful ready-vs-live ledger for GitHub Pages, release, package metadata, builder bundles, and registry/listing-prep status.
+- **Integrations**
+  Use [`INTEGRATIONS.md`](./INTEGRATIONS.md) when you want the shortest truthful front desk for the builder pack, native bundle candidates, and current read-only consumption surfaces before diving into the full integration handbook.
 - **Builder Starter Pack**
   Use [`docs/integrations/README.md`](./docs/integrations/README.md) when you want repo-owned example payloads, local onboarding order, starter prompts, config recipes, a copyable builder skill card, and per-client guidance for Claude Code, Codex, OpenHands, OpenCode, OpenClaw, and similar builder workflows that should stay inside the current read-only / local-first boundary.
 - **Native Plugin Bundles**
