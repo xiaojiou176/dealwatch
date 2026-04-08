@@ -311,9 +311,21 @@ This workflow does **not** prove:
 - real-world calibration quality
 - enough historical evidence for `buy_now`
 
-It also does **not** mean "only external blockers remain."
+It also does **not** mean "only external blockers remain" as a generic rule.
 
-With the current workspace now at `11 reviewed`, `0 pending`, the immediate repo-local review debt for this corpus is closed. The next honest blocker is broader native compare-origin diversity, not another pass over the same repeated pears family.
+For the current canonical v1 workspace, though, the immediate repo-local review debt for this corpus is closed (`11 reviewed`, `0 pending`).
+The next honest blocker now belongs to broader expansion only:
+
+- not Compare Preview advisory v1 itself
+- not compare-evidence ingestion
+- not review continuity
+- but the lack of a new real second-family runtime compare-evidence package beyond the repeated pears pair
+
+The current best candidate pair remains Safeway + Target fairlife:
+
+- Target now has a fresh repo-side live parse proof again
+- Safeway still returns an Incapsula block page on the automated Playwright path
+- the current machine still has no live DealWatch-owned dedicated Chrome lane under `~/.cache/dealwatch/browser/chrome-user-data`
 
 ## Troubleshooting
 

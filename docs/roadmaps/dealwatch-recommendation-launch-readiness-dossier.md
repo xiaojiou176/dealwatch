@@ -296,6 +296,9 @@ That means the remaining blocker is now narrower and more external than before:
 
 This is why the remaining blocker now belongs to broader expansion only.
 
+Compare Preview advisory v1 itself is not re-blocked by these findings.
+What stays blocked is the next broader expansion step beyond that shipped slice.
+
 Future expansion beyond Compare Preview v1 still needs:
 
 - more native compare-origin families than the current repeated pears pool
