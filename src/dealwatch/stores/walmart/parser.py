@@ -114,7 +114,8 @@ class WalmartParser:
     @staticmethod
     def _detect_blocked_page(url: str, html_text: str) -> str | None:
         lowered = f"{url}\n{html_text}".lower()
-        if all(marker in lowered for marker in _BLOCKED_PAGE_MARKERS):
+        matched_markers = sum(1 for marker in _BLOCKED_PAGE_MARKERS if marker in lowered)
+        if "walmart.com/blocked?" in lowered or matched_markers >= 2:
             return "walmart_robot_or_human"
         return None
 
