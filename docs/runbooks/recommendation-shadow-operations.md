@@ -88,6 +88,16 @@ Why `--native-compare-repeat-budget 0` matters:
 - the current native compare-origin runtime pool is still dominated by one repeated smoke-test pears pair
 - this flag keeps one representative case per detected pattern instead of letting repeated history masquerade as broader coverage
 
+Current preferred source order for native compare-origin harvesting is:
+
+1. real runtime compare-evidence packages under `.runtime-cache/runs/compare-evidence/`
+2. reconstructed watch-group compare-origin cases only when those compare-evidence packages do not exist yet
+
+In plain English:
+
+> if the repo already has the original compare-stage answer sheets, grade those first
+> only fall back to watch-group recap notes when the answer sheets are still missing
+
 Use the runtime-only path when you explicitly want to skip the seeded starter lab:
 
 ```bash
@@ -122,6 +132,11 @@ What this writes:
 - `runs/compare-evidence/_shadow-monitoring/recommendation_shadow_summary.json`
 - `runs/compare-evidence/_shadow-monitoring/recommendation_replay_campaign_v1.json`
 - `runs/compare-evidence/_shadow-monitoring/recommendation_replay_campaign_v1.md`
+
+When you are trying to grow native compare-origin breadth with fresh local compare runs, keep host safety in mind:
+
+- if the machine already has more than six browser instances, do not open another compare session just to squeeze out one more corpus item
+- finish non-browser repo-side work first or wait for active owners to recover their browser lanes
 
 ## Step 2 — List pending internal reviews
 

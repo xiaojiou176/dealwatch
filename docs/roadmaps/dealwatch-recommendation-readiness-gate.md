@@ -226,6 +226,7 @@ Why:
 - it is still the evidence-review step
 - the operator has not yet committed to a durable winner as purchase advice
 - compare evidence already has a repo-local artifact path
+- future breadth growth should now prefer real runtime compare-evidence packages over reconstructed watch-group fallbacks whenever those packages exist
 
 ### Not approved as first shadow anchors
 
