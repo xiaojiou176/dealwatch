@@ -245,3 +245,99 @@ def test_recommendation_shadow_review_script_requires_deeper_disagreement_detail
 
     assert review.returncode != 0
     assert "Deeper disagreement review requires --expected-verdict, --actual-verdict" in review.stderr
+
+
+def test_recommendation_campaign_rerun_preserves_existing_review_state(tmp_path) -> None:
+    workspace = tmp_path / "recommendation-review-preserved"
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_recommendation_evaluation_campaign.py",
+            "--workspace",
+            str(workspace),
+            "--seed-fixture-corpus",
+        ],
+        cwd=ROOT,
+        env=_script_env(),
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    pending_before = subprocess.run(
+        [
+            sys.executable,
+            "scripts/review_recommendation_shadow.py",
+            "--workspace",
+            str(workspace),
+            "--list-pending",
+        ],
+        cwd=ROOT,
+        env=_script_env(),
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    artifact_id = json.loads(pending_before.stdout)["pending_reviews"][0]["artifact_id"]
+
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/review_recommendation_shadow.py",
+            "--workspace",
+            str(workspace),
+            "--artifact-id",
+            artifact_id,
+            "--reviewer",
+            "maintainer",
+            "--decision",
+            "confirmed",
+            "--reason-code",
+            "correct_verdict",
+            "--outcome-category",
+            "correct_verdict",
+            "--observed-outcome",
+            "The wait verdict remained the safest internal-only decision after review.",
+            "--notes",
+            "Keep the current wait posture.",
+        ],
+        cwd=ROOT,
+        env=_script_env(),
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    rerun = subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_recommendation_evaluation_campaign.py",
+            "--workspace",
+            str(workspace),
+        ],
+        cwd=ROOT,
+        env=_script_env(),
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    rerun_payload = json.loads(rerun.stdout)
+    assert rerun_payload["summary"]["review_pending_count"] == 1
+
+    pending_after = subprocess.run(
+        [
+            sys.executable,
+            "scripts/review_recommendation_shadow.py",
+            "--workspace",
+            str(workspace),
+            "--list-pending",
+        ],
+        cwd=ROOT,
+        env=_script_env(),
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    pending_after_payload = json.loads(pending_after.stdout)
+    assert pending_after_payload["pending_count"] == 1
+    assert pending_after_payload["pending_reviews"][0]["artifact_id"] != artifact_id

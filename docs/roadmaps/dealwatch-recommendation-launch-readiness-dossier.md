@@ -56,6 +56,14 @@ It means Prompt 8 now measures the pool honestly:
 - the same `ranch99` + `weee` pears pair accounted for `100%` of the available native compare-origin pool
 - Prompt 8 therefore kept `1` representative native compare-origin case and dropped `29` repeated-depth copies from the fresh replay batch
 
+The native compare-origin lane now prefers a stricter source order too:
+
+- real runtime compare-evidence packages first, when they exist
+- reconstructed watch-group compare-origin fallbacks only when those compare-evidence packages do not exist yet
+
+That improves the repo-side path for future calibration growth.
+It does **not** change the current verdict for this snapshot because the current native pool is still one repeated pears family either way.
+
 The current breadth-hardening snapshot therefore shows:
 
 | Evidence point | Current repo-local result | Why it matters |
@@ -226,6 +234,12 @@ The repo is still not proving public purchase timing behavior across:
 - Watch Group maturity
 - Task history maturity
 - cross-surface wording safety
+
+There is now one cleaner repo-side next move before we call this purely external:
+
+- use the shipped local Compare Preview advisory flow to create more real runtime compare-evidence packages for new cross-store families
+
+If that path still does not produce a second native family, then the blocker becomes even more clearly a live-history/data-supply problem instead of an ingestion-gap problem.
 
 ### 4. Public silence still matters
 

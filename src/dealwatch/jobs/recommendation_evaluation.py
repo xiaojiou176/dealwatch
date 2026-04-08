@@ -614,6 +614,104 @@ def _latest_runtime_group_cases(
     return cases
 
 
+def _latest_runtime_compare_evidence_cases(
+    runtime_runs_dir: Path,
+) -> list[RuntimeReplayCase]:
+    base_dir = runtime_runs_dir / "compare-evidence"
+    if not base_dir.exists():
+        return []
+
+    cases: list[RuntimeReplayCase] = []
+    for path in sorted(base_dir.glob("*/compare_evidence.json")):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+
+        comparisons = [dict(item) for item in (payload.get("comparisons") or [])]
+        successful = [item for item in comparisons if item.get("fetch_succeeded")]
+        if len(successful) < 2:
+            continue
+
+        candidate_by_key = {
+            str(item.get("candidate_key") or ""): item
+            for item in successful
+            if str(item.get("candidate_key") or "")
+        }
+        matches = [dict(item) for item in (payload.get("matches") or [])]
+        top_match = matches[0] if matches else None
+
+        top_candidates: list[dict[str, Any]] = []
+        if top_match is not None:
+            left_key = str(top_match.get("left_candidate_key") or "")
+            right_key = str(top_match.get("right_candidate_key") or "")
+            if left_key and left_key in candidate_by_key:
+                top_candidates.append(candidate_by_key[left_key])
+            if right_key and right_key in candidate_by_key and right_key != left_key:
+                top_candidates.append(candidate_by_key[right_key])
+
+        if len(top_candidates) < 2:
+            top_candidates = successful[:2]
+
+        source_urls = tuple(
+            sorted(str(item.get("submitted_url") or item.get("normalized_url") or "") for item in top_candidates)
+        )
+        candidate_keys = tuple(sorted(str(item.get("candidate_key") or "") for item in top_candidates))
+        if not all(source_urls) or not all(candidate_keys):
+            continue
+
+        artifact_id = str(payload.get("artifact_id") or path.parent.name)
+        saved_at = str(payload.get("saved_at") or ((payload.get("summary") or {}).get("saved_at") or ""))
+        store_pair = _normalize_identity_values(
+            [str(item.get("store_key") or "") for item in top_candidates]
+        )
+        product_family_pair = _candidate_family_pair(candidate_keys)
+        compare_evidence = {
+            "submitted_inputs": list(payload.get("submitted_inputs") or []),
+            "zip_code": str(payload.get("zip_code") or "00000"),
+            "submitted_count": int(payload.get("submitted_count") or len(payload.get("submitted_inputs") or [])),
+            "resolved_count": int(payload.get("resolved_count") or len(successful)),
+            "comparisons": comparisons,
+            "matches": matches,
+            "recommended_next_step_hint": dict(payload.get("recommended_next_step_hint") or {}),
+            "risk_notes": list(payload.get("risk_notes") or []),
+            "risk_note_items": list(payload.get("risk_note_items") or []),
+            "successful_candidate_count": int(
+                (payload.get("summary") or {}).get("successful_candidate_count")
+                or payload.get("successful_candidate_count")
+                or len(successful)
+            ),
+            "strongest_match_score": float(
+                (payload.get("summary") or {}).get("strongest_match_score")
+                or payload.get("strongest_match_score")
+                or (top_match.get("score") if top_match else 0.0)
+            ),
+        }
+        compare_label = str(((payload.get("summary") or {}).get("headline")) or "runtime compare evidence")
+        cases.append(
+            RuntimeReplayCase(
+                artifact_id=artifact_id,
+                label=f"runtime_compare:{compare_label}",
+                source_anchor="compare_preview",
+                source_summary_path=str(path),
+                source_metadata={
+                    "saved_at": saved_at,
+                    "artifact_id": artifact_id,
+                    "artifact_kind": str(payload.get("artifact_kind") or "compare_evidence"),
+                    "non_seeded": True,
+                    "source_kind": "runtime_compare_evidence_package",
+                    "pattern_key": _pattern_key(source_urls, candidate_keys),
+                    "source_url_pair": list(source_urls),
+                    "store_pair": list(store_pair),
+                    "candidate_pair": list(candidate_keys),
+                    "product_family_pair": list(product_family_pair),
+                },
+                compare_evidence=compare_evidence,
+            )
+        )
+    return cases
+
+
 def _latest_runtime_task_cases(runtime_runs_dir: Path) -> list[RuntimeReplayCase]:
     latest_by_pattern: dict[tuple[str, str, str, str | None], tuple[str, Path, dict[str, Any]]] = {}
     pattern_counts: Counter[tuple[str, str, str, str | None]] = Counter()
@@ -819,6 +917,53 @@ def _write_replay_artifacts(
     compare_html_path = artifact_dir / "compare_evidence.html"
     shadow_path = artifact_dir / "recommendation_shadow.json"
     shadow_html_path = artifact_dir / "recommendation_shadow.html"
+
+    existing_shadow = service._read_recommendation_shadow_payload(artifact_id)
+    if existing_shadow:
+        existing_review = dict(existing_shadow.get("review") or {})
+        if existing_review:
+            shadow_payload["review"] = existing_review
+        existing_monitoring = dict(existing_shadow.get("monitoring") or {})
+        monitoring = dict(shadow_payload.get("monitoring") or {})
+        for key in (
+            "review_state",
+            "review_reason_code",
+            "outcome_category",
+            "agreement_bucket",
+            "review_recorded_at",
+        ):
+            if key in existing_monitoring:
+                monitoring[key] = existing_monitoring[key]
+        shadow_payload["monitoring"] = monitoring
+        if existing_shadow.get("review_log_path"):
+            shadow_payload["review_log_path"] = existing_shadow.get("review_log_path")
+        if existing_shadow.get("public_contract_bridge"):
+            shadow_payload["public_contract_bridge"] = existing_shadow.get("public_contract_bridge")
+
+    latest_review_record: dict[str, Any] | None = None
+    for record in service._load_recommendation_shadow_review_records():
+        if str(record.get("artifact_id") or "") == artifact_id:
+            latest_review_record = record
+    if latest_review_record is not None:
+        shadow_payload["review"] = {
+            "state": latest_review_record.get("decision") or "pending_internal_review",
+            "owner": latest_review_record.get("reviewer"),
+            "reason_code": latest_review_record.get("reason_code"),
+            "notes": latest_review_record.get("notes"),
+            "observed_outcome": latest_review_record.get("observed_outcome"),
+            "recorded_at": latest_review_record.get("recorded_at"),
+            "outcome_category": latest_review_record.get("outcome_category"),
+            "follow_up_action": latest_review_record.get("follow_up_action"),
+        }
+        monitoring = dict(shadow_payload.get("monitoring") or {})
+        monitoring["review_state"] = latest_review_record.get("decision") or "pending_internal_review"
+        monitoring["review_reason_code"] = latest_review_record.get("reason_code")
+        monitoring["outcome_category"] = latest_review_record.get("outcome_category")
+        monitoring["agreement_bucket"] = latest_review_record.get("agreement_bucket")
+        monitoring["review_recorded_at"] = latest_review_record.get("recorded_at")
+        shadow_payload["monitoring"] = monitoring
+        shadow_payload["review_log_path"] = str(service._recommendation_shadow_review_log_path())
+
     compare_path.write_text(json.dumps(compare_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     compare_html_path.write_text(service._render_compare_evidence_html(compare_payload), encoding="utf-8")
     shadow_path.write_text(json.dumps(shadow_payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -977,9 +1122,11 @@ async def harvest_native_compare_origin_corpus(
 ) -> dict[str, Any]:
     local_service = service or await create_recommendation_evaluation_service(workspace)
     runtime_dir = Path(runtime_runs_dir)
+    compare_cases = _latest_runtime_compare_evidence_cases(runtime_dir)
     group_cases = _latest_runtime_group_cases(runtime_dir, per_pattern_limit=None)
+    source_cases = compare_cases if compare_cases else group_cases
     selected_cases, diversity = _select_native_compare_origin_cases(
-        group_cases,
+        source_cases,
         repeat_budget_per_pattern=repeat_budget_per_pattern,
     )
     harvested_cases: list[dict[str, Any]] = []
@@ -1027,6 +1174,8 @@ async def harvest_native_compare_origin_corpus(
 
     return {
         "runtime_runs_dir": str(runtime_dir),
+        "source_case_kind": "runtime_compare_evidence_package" if compare_cases else "runtime_group_summary_fallback",
+        "available_source_case_count": len(source_cases),
         "native_compare_origin_case_count": len(harvested_cases),
         "source_diversity": diversity,
         "cases": harvested_cases,
@@ -1294,6 +1443,11 @@ async def generate_recommendation_replay_campaign(
             runtime_runs_dir=runtime_runs_dir,
             repeat_budget_per_pattern=native_compare_repeat_budget,
         )
+    native_source_case_kind = (
+        str(native_compare_origin_result.get("source_case_kind") or "")
+        if native_compare_origin_result is not None
+        else ""
+    )
 
     replay_manifest = await service.create_recommendation_replay_manifest()
     monitoring_summary = await service.create_recommendation_shadow_monitoring_summary()
@@ -1375,6 +1529,11 @@ async def generate_recommendation_replay_campaign(
         launch_blockers.insert(
             0,
             "The native compare-origin expansion now measures source diversity directly, but the resulting evidence is still maintainer-scoped and must stay internal-only.",
+        )
+    if native_source_case_kind == "runtime_group_summary_fallback":
+        launch_blockers.insert(
+            0,
+            "The native compare-origin lane still had to fall back to reconstructed watch-group summaries because no runtime compare-evidence packages were available yet.",
         )
     if available_native_compare_diversity.get("concentration_risk") == "high":
         launch_blockers.insert(
@@ -1460,6 +1619,7 @@ async def generate_recommendation_replay_campaign(
                 "native_compare_origin_concentration_risk": available_native_compare_diversity.get(
                     "concentration_risk"
                 ),
+                "native_compare_origin_source_case_kind": native_source_case_kind or None,
             },
         },
         "source_diversity": {
