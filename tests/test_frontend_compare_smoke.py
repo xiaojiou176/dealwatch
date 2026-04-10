@@ -37,9 +37,9 @@ def test_compare_frontend_smoke_keeps_second_pass_flow_discoverable() -> None:
     # compare -> save local proof -> mint runtime proof
     assert "handleSaveEvidencePackage" in compare_page
     assert "handleCreateRuntimeEvidencePackage" in compare_page
-    assert 'Execution lane' in compare_page
-    assert 'Proof lane' in compare_page
-    assert 'Commit lane' in compare_page
+    assert 'compare.execution.lane.label' in compare_page
+    assert 'compare.execution.proof.label' in compare_page
+    assert 'compare.execution.commit.label' in compare_page
     assert 'id="saved-evidence-panel"' in compare_page
     assert 'id="group-builder-panel"' in compare_page
     assert 'href="#group-builder-panel"' in compare_page
@@ -59,6 +59,7 @@ def test_compare_frontend_smoke_keeps_second_pass_flow_discoverable() -> None:
     assert 'buildShellFocus' in app_shell
     assert 'common.languageLabel' in app_shell
     assert 'shell.secondaryHint' in app_shell
+    assert 'shell.focus.proofLabel' in app_shell
 
 
 def test_compare_frontend_smoke_catalogs_cover_route_and_locale_copy() -> None:

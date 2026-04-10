@@ -44,7 +44,7 @@ import {
 } from "./compare/sections";
 
 function compareExecutionCopy(
-  locale: string,
+  t: (key: string) => string,
   values: {
     hasDecision: boolean;
     hasSavedPackage: boolean;
@@ -62,54 +62,32 @@ function compareExecutionCopy(
   runtimeLabel: string;
   jumpLabel: string;
 } {
-  if (locale === "zh-CN") {
-    return {
-      laneTitle: values.hasDecision ? "下一步：按 decision board 行动" : "下一步：先跑出 compare 结果",
-      laneSummary: values.hasDecision
-        ? "别直接跳去建 watch。先看 decision board 推荐的是继续 review、建 group，还是只保留证据。"
-        : "先提交至少两条 URL，让 compare 结果把 basket 里最强的一行和最该警惕的风险说清楚。",
-      proofTitle: values.hasRuntimePackage
-        ? "证据已进入 runtime 包"
-        : values.hasSavedPackage
-          ? "证据已本地保存，仍可继续加固"
-          : "证据还没落袋",
-      proofSummary: values.hasRuntimePackage
-        ? "这轮 compare 已经有 runtime-backed proof，可以带着清楚的边界继续往下走。"
-        : values.hasSavedPackage
-          ? "本地 evidence package 已保存。下一步只有在这篮子还站得住时，才值得继续铸成 runtime 包。"
-          : "先把 evidence package 存下来，再谈 commit。这样你回头复核时不会只剩一张好看的页面。",
-      commitTitle: values.groupReadyCount >= 2 ? "可以考虑进入 compare-aware watch group" : "还不到 commit 成 group 的时机",
-      commitSummary: values.groupReadyCount >= 2
-        ? `当前已有 ${values.groupReadyCount} 个 group-ready 行，可以进入 watch group builder，但前提还是证据先站稳。`
-        : "现在更像 review lane，不像 commit lane。先把支持度不足的行留在证据层，不要急着变成长期 watch state。",
-      saveLabel: "先保存本地证据",
-      runtimeLabel: "再铸成 runtime 包",
-      jumpLabel: "查看 commit 入口",
-    };
-  }
-
   return {
-    laneTitle: values.hasDecision ? "Next move: follow the decision board" : "Next move: generate a clean compare result",
+    laneTitle: values.hasDecision
+      ? t("compare.execution.lane.title.ready")
+      : t("compare.execution.lane.title.idle"),
     laneSummary: values.hasDecision
-      ? "Do not jump straight into watch creation. Use the decision board to decide whether this basket should stay in review, become a group, or stop at evidence."
-      : "Submit at least two URLs first so the compare run can name the strongest row and the sharpest risk inside the basket.",
+      ? t("compare.execution.lane.summary.ready")
+      : t("compare.execution.lane.summary.idle"),
     proofTitle: values.hasRuntimePackage
-      ? "Proof already has a runtime-backed package"
+      ? t("compare.execution.proof.title.runtime")
       : values.hasSavedPackage
-        ? "Proof is saved locally and still reviewable"
-        : "Proof is not stored yet",
+        ? t("compare.execution.proof.title.local")
+        : t("compare.execution.proof.title.empty"),
     proofSummary: values.hasRuntimePackage
-      ? "This compare run already has a runtime-backed proof package, so the next move can stay honest without pretending the basket is final."
+      ? t("compare.execution.proof.summary.runtime")
       : values.hasSavedPackage
-        ? "A local evidence package exists. Promote it only if the basket still stands up after review."
-        : "Save the evidence package before you commit anything. That way the proof survives even if the basket needs one more review pass.",
-    commitTitle: values.groupReadyCount >= 2 ? "This basket can move toward a compare-aware watch group" : "This basket is not ready to commit into a group yet",
+        ? t("compare.execution.proof.summary.local")
+        : t("compare.execution.proof.summary.empty"),
+    commitTitle: values.groupReadyCount >= 2
+      ? t("compare.execution.commit.title.ready")
+      : t("compare.execution.commit.title.idle"),
     commitSummary: values.groupReadyCount >= 2
-      ? `${values.groupReadyCount} rows are group-ready, so the group builder can become the final lane after the proof is preserved.`
-      : "This still behaves like a review lane, not a commit lane. Keep weaker rows in evidence instead of freezing them into long-lived watch state.",
-    saveLabel: "Save local proof first",
-    runtimeLabel: "Then mint runtime proof",
-    jumpLabel: "Open commit lane",
+      ? t("compare.execution.commit.summary.ready").replace("{{count}}", String(values.groupReadyCount))
+      : t("compare.execution.commit.summary.idle"),
+    saveLabel: t("compare.execution.proof.saveLabel"),
+    runtimeLabel: t("compare.execution.proof.runtimeLabel"),
+    jumpLabel: t("compare.execution.commit.jumpLabel"),
   };
 }
 
@@ -297,7 +275,7 @@ export function ComparePage() {
     }
     return savedPackages.find((item) => item.id === draftPackageId)?.runtimeArtifact ?? null;
   }, [draftPackageId, savedPackages]);
-  const executionRail = compareExecutionCopy(locale, {
+  const executionRail = compareExecutionCopy(t, {
     hasDecision: Boolean(decisionBoard),
     hasSavedPackage: savedPackages.length > 0 || Boolean(draftPackageId),
     hasRuntimePackage: Boolean(currentRuntimePackage),
@@ -558,7 +536,7 @@ export function ComparePage() {
       <div class="grid gap-4 xl:grid-cols-[1.1fr,0.9fr,0.9fr]">
         <div class="rounded-[1.5rem] border border-ink/10 bg-base-100/95 p-5 shadow-card">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-            {locale === "zh-CN" ? "执行路线" : "Execution lane"}
+            {t("compare.execution.lane.label")}
           </p>
           <h3 class="mt-2 text-lg font-semibold text-ink">{executionRail.laneTitle}</h3>
           <p class="mt-2 text-sm leading-6 text-slate-600">{executionRail.laneSummary}</p>
@@ -566,7 +544,7 @@ export function ComparePage() {
 
         <div class="rounded-[1.5rem] border border-ember/20 bg-ember/5 p-5 shadow-card">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-ember">
-            {locale === "zh-CN" ? "证明路线" : "Proof lane"}
+            {t("compare.execution.proof.label")}
           </p>
           <h3 class="mt-2 text-lg font-semibold text-ink">{executionRail.proofTitle}</h3>
           <p class="mt-2 text-sm leading-6 text-slate-700">{executionRail.proofSummary}</p>
@@ -589,7 +567,7 @@ export function ComparePage() {
 
         <div class="rounded-[1.5rem] border border-base-300 bg-base-100/95 p-5 shadow-card">
           <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-            {locale === "zh-CN" ? "提交路线" : "Commit lane"}
+            {t("compare.execution.commit.label")}
           </p>
           <h3 class="mt-2 text-lg font-semibold text-ink">{executionRail.commitTitle}</h3>
           <p class="mt-2 text-sm leading-6 text-slate-600">{executionRail.commitSummary}</p>
