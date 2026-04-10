@@ -14,6 +14,13 @@
     "summary": "先从 Compare Preview 开始，把最合适的候选保留为 watch task 或 compare-aware watch group，再从同一个控制舱查看运行证据、AI 辅助解释、恢复指引，以及门店和运维信息。",
     "productShapeLabel": "当前产品形态",
     "productShapeValue": "URL -> Compare Preview -> WatchTask / WatchGroup -> 运行记录 -> 恢复 / 提醒 / 门店运维",
+    "primaryPathLabel": "主路线",
+    "primaryPathCompare": "先比价",
+    "primaryPathDecision": "读懂决策看板",
+    "primaryPathCommit": "再提交正确的监控状态",
+    "primaryNavLabel": "主入口",
+    "secondaryNavLabel": "上下文入口",
+    "secondaryHint": "只有当你打开或创建了任务 / 分组，详情入口才会出现。",
     "nav": {
       "compare": "比价",
       "watchList": "监控列表",
@@ -31,7 +38,7 @@
     "form": {
       "eyebrow": "比价预览",
       "title": "先检查跨门店 URL 候选，再决定是否创建任务或分组",
-      "summary": "把这个页面理解成产品的“收件台”。它帮助你判断这些候选应该进入同一个 compare-aware basket、拆成单项任务，还是因为证据仍然混杂而先留在复核区。",
+      "summary": "先把候选 URL 贴进来，让 DealWatch 规范化这个篮子，再根据决策看板判断它该继续留在复核区、变成单任务，还是升级成 compare-aware group。",
       "zipCode": "邮编",
     "productUrls": "商品链接",
     "productUrlsHelp": "每行填写一个 URL。Compare Preview 接受 2 到 10 个非空链接。",
@@ -44,6 +51,17 @@
       "maxUrls": "最多输入十个商品 URL。"
     }
   },
+    "route": {
+      "eyebrow": "首个成功路径",
+      "title": "第一屏要围绕一个决策，而不是六扇门同时喊你",
+      "summary": "把这里理解成一张有向导的工作台：先比较候选，再读决策看板，最后只提交证据真正支持的那种 watch 状态。",
+      "stepCompareTitle": "先比较这个篮子",
+      "stepCompareSummary": "先贴 URL，让产品告诉你哪些行真的属于同一个候选集合。",
+      "stepDecisionTitle": "再读决策看板",
+      "stepDecisionSummary": "先看 headline、风险摘要和最强配对，再决定要不要创建长期状态。",
+      "stepCommitTitle": "最后提交正确状态",
+      "stepCommitSummary": "如果只有一行足够清楚，就建单任务；只有当整个篮子真的站得住，才建 watch group。"
+    },
     "decision": {
       "eyebrow": "决策看板",
       "recommendedNextStep": "推荐下一步",
@@ -911,6 +929,14 @@
       "heroKicker": "以 compare-first 为核心的价格情报",
       "heroTitle": "先比较整条货架，再决定放进哪辆购物车。",
       "heroSummary": "DealWatch 最强的地方，是在你保存 watch 之前就开始帮你做决策：先比较候选 URL，保留跨门店篮子，再把真正值得长期跟踪的那一行带进本地运行栈，同时保留 proof、到手价上下文和提醒历史。",
+      "routeCompareTitle": "1. Compare Preview",
+      "routeCompareSummary": "先看固定样例把产品讲明白，再决定要不要安装任何东西。",
+      "routeProofTitle": "2. Proof",
+      "routeProofSummary": "先核对验证链路，让这个故事像拿出了证据，而不是只会宣传。",
+      "routeQuickStartTitle": "3. Quick Start",
+      "routeQuickStartSummary": "只有当 compare 故事已经讲清楚时，才进入本地运行栈。",
+      "routeBuildersTitle": "专业路线",
+      "routeBuildersSummary": "Builders 继续留给 Codex、Claude Code 等只读 client 接线场景，不抢首页主线。",
       "heroPrimaryCta": "打开样例 compare",
       "heroSecondaryCta": "查看 proof 链路",
       "heroBuilderCta": "运行本地产品",

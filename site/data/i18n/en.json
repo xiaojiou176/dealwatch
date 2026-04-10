@@ -14,6 +14,13 @@
     "summary": "Start with Compare Preview, keep the right candidate alive as a watch task or compare-aware watch group, then use runtime evidence, AI-assisted explanations, recovery guidance, and store/operator surfaces from one place.",
     "productShapeLabel": "Current Product Shape",
     "productShapeValue": "URL -> Compare Preview -> WatchTask / WatchGroup -> Runs -> Recovery / Alerts / Store Ops",
+    "primaryPathLabel": "Primary flow",
+    "primaryPathCompare": "Compare",
+    "primaryPathDecision": "Read the decision board",
+    "primaryPathCommit": "Commit the right watch state",
+    "primaryNavLabel": "Primary lanes",
+    "secondaryNavLabel": "Context lane",
+    "secondaryHint": "Detail views appear after you open or create a task or group.",
     "nav": {
       "compare": "Compare",
       "watchList": "Watches",
@@ -31,7 +38,7 @@
     "form": {
       "eyebrow": "Compare preview",
       "title": "Inspect cross-store URL candidates before you create a task or group",
-      "summary": "Think of this page as the intake desk for the product. It helps you decide whether the rows belong in one compare-aware basket, should become a single task, or should stay in review because the evidence is still mixed.",
+      "summary": "Start small: paste the candidate URLs, let DealWatch normalize the basket, then use the decision board to decide whether this should stay in review, become one task, or become a compare-aware group.",
       "zipCode": "ZIP Code",
     "productUrls": "Product URLs",
     "productUrlsHelp": "Use one URL per line. The compare preview accepts 2 to 10 non-empty URLs.",
@@ -44,6 +51,17 @@
       "maxUrls": "Enter no more than ten product URLs."
     }
   },
+    "route": {
+      "eyebrow": "First-success path",
+      "title": "Keep the first screen about one decision, not six doors",
+      "summary": "This page works best when you treat it like a guided desk: compare the rows first, read the decision board second, then commit only the watch state that the evidence actually supports.",
+      "stepCompareTitle": "Compare the basket",
+      "stepCompareSummary": "Paste the URLs and let the product tell you which rows really belong in the same candidate set.",
+      "stepDecisionTitle": "Read the decision board",
+      "stepDecisionSummary": "Use the headline, risk summary, and strongest pair before you create anything durable.",
+      "stepCommitTitle": "Commit the right state",
+      "stepCommitSummary": "Create one watch task for a clear single row, or a watch group only when the basket truly holds together."
+    },
     "decision": {
       "eyebrow": "Decision board",
       "recommendedNextStep": "Recommended next step",
@@ -911,6 +929,14 @@
       "heroKicker": "Compare-first grocery intelligence",
       "heroTitle": "Compare the aisle before you commit to one cart.",
       "heroSummary": "DealWatch is strongest when the real job starts before you save a watch: compare the candidate URLs, keep the cross-store basket alive, then carry the winning row into a local runtime with proof, effective-price context, and alert history still attached.",
+      "routeCompareTitle": "1. Compare Preview",
+      "routeCompareSummary": "See the product on a fixed sample first, before you install anything.",
+      "routeProofTitle": "2. Proof",
+      "routeProofSummary": "Check the verifier trail so the story feels earned, not just advertised.",
+      "routeQuickStartTitle": "3. Quick Start",
+      "routeQuickStartSummary": "Move into the local runtime only after the compare story already makes sense.",
+      "routeBuildersTitle": "Specialist route",
+      "routeBuildersSummary": "Builders stays secondary for Codex, Claude Code, and similar read-only client wiring.",
       "heroPrimaryCta": "Open the sample compare",
       "heroSecondaryCta": "See the proof trail",
       "heroBuilderCta": "Run the local product",
