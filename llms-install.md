@@ -85,6 +85,11 @@ The first honest tool flow is:
 - not an SDK
 - not a promise that every route in the repo is part of the public Cline contract
 
+## Troubleshooting
+
+- If port `15432` is already occupied on your machine, start the local PostgreSQL service on another free port and point `DATABASE_URL` at that port before launching the MCP server.
+- If the server exits immediately, re-run `PYTHONPATH=src uv run python -m dealwatch.mcp list-tools --json` first; that is the fastest way to confirm the local runtime and MCP surface are both reachable.
+
 ## Read next
 
 - [`README.md`](./README.md)
