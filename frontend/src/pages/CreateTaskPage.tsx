@@ -217,7 +217,7 @@ export function CreateTaskPage() {
               onInput={(event) =>
                 update("submittedUrl", (event.currentTarget as HTMLInputElement).value)
               }
-              spellCheck={false}
+              spellcheck={false}
               type="url"
               value={form.submittedUrl}
             />
@@ -231,7 +231,7 @@ export function CreateTaskPage() {
               inputMode="numeric"
               name="zipCode"
               onInput={(event) => update("zipCode", (event.currentTarget as HTMLInputElement).value)}
-              spellCheck={false}
+              spellcheck={false}
               value={form.zipCode}
             />
           </label>
@@ -304,7 +304,7 @@ export function CreateTaskPage() {
               onInput={(event) =>
                 update("recipientEmail", (event.currentTarget as HTMLInputElement).value)
               }
-              spellCheck={false}
+              spellcheck={false}
               type="email"
               value={form.recipientEmail}
             />
