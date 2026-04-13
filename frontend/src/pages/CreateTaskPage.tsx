@@ -211,13 +211,13 @@ export function CreateTaskPage() {
           <label class="form-control md:col-span-2">
             <span class="label-text font-medium">{createText("createTaskPage.submittedUrl", CREATE_TASK_COPY.submittedUrl)}</span>
             <input
-              autocomplete="url"
+              autoComplete="url"
               class="input input-bordered"
               name="submittedUrl"
               onInput={(event) =>
                 update("submittedUrl", (event.currentTarget as HTMLInputElement).value)
               }
-              spellcheck={false}
+              spellCheck={false}
               type="url"
               value={form.submittedUrl}
             />
@@ -226,12 +226,12 @@ export function CreateTaskPage() {
           <label class="form-control">
             <span class="label-text font-medium">{createText("createTaskPage.zipCode", CREATE_TASK_COPY.zipCode)}</span>
             <input
-              autocomplete="postal-code"
+              autoComplete="postal-code"
               class="input input-bordered"
               inputMode="numeric"
               name="zipCode"
               onInput={(event) => update("zipCode", (event.currentTarget as HTMLInputElement).value)}
-              spellcheck={false}
+              spellCheck={false}
               value={form.zipCode}
             />
           </label>
@@ -298,13 +298,13 @@ export function CreateTaskPage() {
           <label class="form-control">
             <span class="label-text font-medium">{createText("createTaskPage.recipientEmail", CREATE_TASK_COPY.recipientEmail)}</span>
             <input
-              autocomplete="email"
+              autoComplete="email"
               class="input input-bordered"
               name="recipientEmail"
               onInput={(event) =>
                 update("recipientEmail", (event.currentTarget as HTMLInputElement).value)
               }
-              spellcheck={false}
+              spellCheck={false}
               type="email"
               value={form.recipientEmail}
             />

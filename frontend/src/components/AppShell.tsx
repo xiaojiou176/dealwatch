@@ -162,6 +162,7 @@ export function AppShell(props: { children: ComponentChildren }) {
                 <nav class="shell-nav-row">
                   {primaryNavItems.map((item) => (
                     <a
+                      key={item.key}
                       class={navClass(currentRoute.value === item.key)}
                       href={routeHref(item.key)}
                     >
@@ -177,6 +178,7 @@ export function AppShell(props: { children: ComponentChildren }) {
                   {contextNavItems.length > 0 ? (
                     contextNavItems.map((item) => (
                       <a
+                        key={item.key}
                         class={contextNavClass(currentRoute.value === item.key)}
                         href={routeHref(item.key)}
                       >
