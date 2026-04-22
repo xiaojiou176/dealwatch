@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 from dealwatch.application.store_onboarding import (
     _LIMITED_SUPPORT_TRUTH_SOURCES,
     _build_store_truth_sources,
